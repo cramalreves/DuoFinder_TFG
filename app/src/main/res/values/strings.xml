@@ -1,3 +1,65 @@
 <resources>
-    <string name="app_name">DuoFinder_TFG</string>
+    <string name="app_name">TFG</string>
+    <string name="title_activity_settings" translatable="false">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="role">Role</string>
+    <string name="server">Server</string>
+    <string name="main1">Select Main champ</string>
+    <string name="main2">Select second main champ</string>
+    <string name="main3">Select third main champ</string>
+    <string name="photo">Profile photo</string>
+    <string name="discord">Discord username</string>
+    <string name="login">Login</string>
+    <string name="signin">Sign In</string>
+    <string name="elo">Elo solo/queue</string>
+    <string name="KLI">Keep logged in</string>
+    <string name="verify_password">Verify password</string>
+    <string name="summoner_name">Summoner name</string>
+    <string name="iron4">Iron IV</string>
+    <string name="iron3">Iron III</string>
+    <string name="iron2">Iron II</string>
+    <string name="iron1">Iron I</string>
+    <string name="bronze4">Bronze IV</string>
+    <string name="bronze3">Bronze III</string>
+    <string name="bronze2">Bronze II</string>
+    <string name="bronze1">Bronze I</string>
+    <string name="silver1">Silver I</string>
+    <string name="silver2">Silver II</string>
+    <string name="silver3">Silver III</string>
+    <string name="silver4">Silver IV</string>
+    <string name="gold1">Gold I</string>
+    <string name="gold2">Gold II</string>
+    <string name="gold3">Gold III</string>
+    <string name="gold4">Gold IV</string>
+    <string name="plat1">Platinum I</string>
+    <string name="plat2">Platinum II</string>
+    <string name="plat3">Platinum III</string>
+    <string name="plat4">Platinum IV</string>
+    <string name="diamond1">Diamond I</string>
+    <string name="diamond2">Diamond II</string>
+    <string name="diamond3">Diamond III</string>
+    <string name="diamond4">Diamond IV</string>
+    <string name="master">Master</string>
+    <string name="gmaster">Grand Master</string>
+    <string name="challenger">Challenger</string>
+    <string name="bard">Bard</string>
+    <string name="masterYi">Master Yi</string>
+    <string name="nunu">Nunu and Willump</string>
+    <string name="validate" translatable="false">Validate</string>
 </resources>
