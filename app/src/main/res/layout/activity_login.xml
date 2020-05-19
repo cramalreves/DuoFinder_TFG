@@ -33,6 +33,7 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="lanzar_actividad"
         android:text="@string/login" />
 
     <Button
