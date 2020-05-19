@@ -33,12 +33,13 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lanzar_actividad"
+        android:onClick="launchHomeActivity"
         android:text="@string/login" />
 
     <Button
         android:id="@+id/signinTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="launchNewUserActivity"
         android:text="@string/signin" />
 </LinearLayout>

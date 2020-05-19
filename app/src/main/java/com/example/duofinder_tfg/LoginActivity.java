@@ -14,8 +14,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void lanzar_actividad(View view) {
+    public void launchHomeActivity(View view) {
         Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    public void launchNewUserActivity(View view) {
+        Intent i = new Intent(this, NewUserActivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
