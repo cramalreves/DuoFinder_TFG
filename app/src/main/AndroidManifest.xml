@@ -15,7 +15,6 @@
         <activity android:name=".NotificationActivity"></activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".NotificationsActivity" />
         <activity android:name=".NewUserActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
