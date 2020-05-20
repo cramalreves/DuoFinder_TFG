@@ -18,6 +18,4 @@
         app:srcCompat="@drawable/logo" />
 
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

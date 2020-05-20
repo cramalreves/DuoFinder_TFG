@@ -42,9 +42,12 @@ public class SwipeAdapter extends ArrayAdapter<Usuario> {
         convertView = activity.getLayoutInflater().inflate(R.layout.content_item,parent,false);
         ImageView imgUser = convertView.findViewById(R.id.imgUser);
         TextView txtName = convertView.findViewById(R.id.txtName);
+        TextView txtElo = convertView.findViewById(R.id.txtElo);
+
 
         Glide.with(activity).load(user.getImagen()).into(imgUser);
         txtName.setText(user.getNombre());
+        txtElo.setText(user.getElo());
 
         return convertView;
     }

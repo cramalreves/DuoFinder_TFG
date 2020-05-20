@@ -26,10 +26,11 @@ public class HomeActivity extends AppCompatActivity implements SwipeStack.SwipeS
 
     private ArrayList <Usuario> getUsers(){
         ArrayList<Usuario> list = new ArrayList<>();
-        list.add(new Usuario("Stellaa37", R.drawable.icon4,false));
-        list.add(new Usuario("ZeKroX24", R.drawable.icon2,false));
-        list.add(new Usuario("SKT Faker", R.drawable.icon3,false));
-        list.add(new Usuario("G2 Perkz", R.drawable.icon1,false));
+        list.add(new Usuario(R.drawable.icon4,"Stellaa37", "Jungle", "GrandMaster", "Vi", "Kha'Zix", "Camille", false));
+        list.add(new Usuario(R.drawable.icon3,"ZeKroX24", "Mid", "Iron 4", "Ekko", "Sylas", "Fizz", false));
+        list.add(new Usuario(R.drawable.icon2,"SKT Faker", "Mid", "Challenger", "Zed", "Twisted Fate", "Kassadin", false));
+        list.add(new Usuario(R.drawable.icon1,"G2 Perkz", "ADCarry", "Challenger", "Kai'Sa", "Xayah", "Aphelios", false));
+        list.add(new Usuario(R.drawable.icon3,"G2 Ibai", "Top", "Master", "Renekton", "Rumble", "Riven", false));
         return list;
     }
     public void like( View view){
