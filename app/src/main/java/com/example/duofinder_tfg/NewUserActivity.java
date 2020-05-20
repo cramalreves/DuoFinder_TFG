@@ -14,8 +14,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,11 +34,14 @@ public class NewUserActivity extends AppCompatActivity {
     private String[] champs, elos, servers, roles;
     int[] champsImages, elosImages, rolesImages;
     private CustomAdapter champsAdapter, elosAdapter, rolesAdapter;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
+        champs = new String[148];
+        searchAllChamps("http://192.168.1.67/tfg/buscar.php");
         setSpinners();
         usernameET = findViewById(R.id.usernameET);
         passwordET = findViewById(R.id.passwordET);
@@ -66,14 +74,6 @@ public class NewUserActivity extends AppCompatActivity {
 
         //STRING ARRAYS
         servers = new String[]{"BR","EUNE","EUW","LAN","LAS","NA","OCE","RU","TR","JP","KR","CN","TW","SAM","VN","TH","PH","MENA"};
-        champs = new String[]{"Aatrox","Ahri","Akali","Alistar","Amumu","Anivia","Annie","Aphelios","Ashe","Aurelion Sol","Azir",String.valueOf(getText(R.string.bard)),"Blitzcrank","Brand","Braum","Caitlyn",
-                "Camille","Cassiopeia","Cho'Gath","Corki","Darius","Diana","Dr. Mundo","Draven","Ekko","Elise","Evelynn","Ezreal","Fiddlesticks","Fiora","Fizz","Galio","Gangplank","Garen",
-                "Gnar","Gragas","Graves","Hecarim","Heimerdinger","Illaoi","Irelia","Ivern","Janna","Jarvan IV","Jax","Jayce","Jhin","Jinx","Kai'Sa","Kalista","Karma","Karthus","Kassadin",
-                "Katarina","Kayle","Kayn","Kennen","Kha'Zix","Kindred","Kled","Kog'Maw","LeBlanc","Lee Sin","Leona","Lissandra","Lucian","Lulu","Lux","Malphite","Malzahar","Maokai",String.valueOf(getText(R.string.masterYi)),
-                "Miss Fortune","Mordekaiser","Morgana","Nami","Nasus","Nautilus","Neeko","Nidalee","Nocturne",String.valueOf(getText(R.string.nunu)),"Olaf","Orianna","Ornn","Pantheon","Poppy","Pyke","Qiyana",
-                "Quinn","Rakan","Rammus","Rek'Sai","Renekton","Rengar","Riven","Rumble","Ryze","Sejuani","Senna","Sett","Shaco","Shen","Shyvana","Singed","Sion","Sivir","Skarner","Sona",
-                "Soraka","Swain","Sylas","Syndra","Tahm Kench","Taliyah","Talon","Taric","Teemo","Thresh","Tristana","Trundle","Tryndamere","Twisted Fate","Twitch","Udyr","Urgot","Varus",
-                "Vayne","Veigar","Vel'Koz","Vi","Viktor","Vladimir","Volibear","Warwick","Wukong","Xayah","Xerath","Xin Zhao","Yasuo","Yorick","Yuumi","Zac","Zed","Ziggs","Zilean","Zoe","Zyra"};
         roles = new String[]{"TOP","JUNGLE","MID","ADC","SUPPORT"};
         elos = new String[]{String.valueOf(getText(R.string.iron4)),String.valueOf(getText(R.string.iron3)),String.valueOf(getText(R.string.iron2)),String.valueOf(getText(R.string.iron1)),
                 String.valueOf(getText(R.string.bronze4)),String.valueOf(getText(R.string.bronze3)),String.valueOf(getText(R.string.bronze2)),String.valueOf(getText(R.string.bronze1)),
@@ -110,6 +110,7 @@ public class NewUserActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item);
         serverSP.setAdapter(serversAdapter);
     }
+
     public void fillMaps(){
         for (int i=0;i<champs.length;i++){
             championsMap.put(champs[i],champsImages[i]);
@@ -174,8 +175,60 @@ public class NewUserActivity extends AppCompatActivity {
                 return parameters;
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void searchAllChamps(String URL){
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+
+                for (int i=0; i < response.length(); i++){
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        champs[i]=jsonObject.getString("name");
+                        System.out.println(champs[i]);
+                    }catch(JSONException error){
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error){
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void searchAllElos(String URL){
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+
+                for (int i=0; i < response.length(); i++){
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        champs[i]=jsonObject.getString("name");
+                        System.out.println(champs[i]);
+                    }catch(JSONException error){
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error){
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
     }
 }
 
