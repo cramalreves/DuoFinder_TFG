@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PresentationActivity"></activity>
         <activity android:name=".NotificationActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SearchActivity" />
