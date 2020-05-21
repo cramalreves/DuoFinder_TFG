@@ -147,7 +147,7 @@ public class NewUserActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> parameters=new HashMap<>();
-                /*parameters.put("username",usernameET.getText().toString());
+                parameters.put("username",usernameET.getText().toString());
                 parameters.put("password",passwordET.getText().toString());
                 parameters.put("summoner_name",summoner_nameET.getText().toString());
                 parameters.put("server",serverSP.getSelectedItem().toString());
@@ -158,9 +158,9 @@ public class NewUserActivity extends AppCompatActivity {
                 parameters.put("thirdMain",champ3SP.getSelectedItem().toString());
                 parameters.put("discord",discordET.getText().toString());
                 parameters.put("opgg","https://"+serverSP.getSelectedItem().toString()+".op.gg/summoner/userName="+summoner_nameET.getText().toString());
-                parameters.put("photo","poro.png");*/
+                parameters.put("photo","poro.png");
 
-                parameters.put("username","Patricio");
+                /*parameters.put("username","Patricio");
                 parameters.put("password","123456789");
                 parameters.put("summoner_name","123456789");
                 parameters.put("server","EUW");
@@ -171,7 +171,7 @@ public class NewUserActivity extends AppCompatActivity {
                 parameters.put("thirdMain","Morgana");
                 parameters.put("discord","Patricio");
                 parameters.put("opgg","hola");
-                parameters.put("photo","poro.png");
+                parameters.put("photo","poro.png");*/
                 return parameters;
             }
         };
@@ -189,7 +189,6 @@ public class NewUserActivity extends AppCompatActivity {
                     try {
                         jsonObject = response.getJSONObject(i);
                         champs[i]=jsonObject.getString("name");
-                        System.out.println(champs[i]);
                     }catch(JSONException error){
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
@@ -214,8 +213,7 @@ public class NewUserActivity extends AppCompatActivity {
                 for (int i=0; i < response.length(); i++){
                     try {
                         jsonObject = response.getJSONObject(i);
-                        champs[i]=jsonObject.getString("name");
-                        System.out.println(champs[i]);
+                        elos[i]=jsonObject.getString("elo");
                     }catch(JSONException error){
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
