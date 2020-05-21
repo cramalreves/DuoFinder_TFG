@@ -1,8 +1,9 @@
 package com.example.duofinder_tfg;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -30,7 +31,16 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation arg0) {
-                lanzar_actividad();
+                SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
+                boolean keepConnected=preferences.getBoolean("keep", false);
+                if(keepConnected){
+                    Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }
