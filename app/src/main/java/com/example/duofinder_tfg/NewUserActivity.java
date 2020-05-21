@@ -131,7 +131,7 @@ public class NewUserActivity extends AppCompatActivity {
             verify_passwordET.setError("Passwords aren't the same");
         }*/
        // executeService("http://192.168.1.67/tfg/insert_user.php");
-        //hola
+        
         executeService("http://192.168.1.128/tfg/insert_user.php");
     }
 
