@@ -69,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void launchHomeActivity(View view) {
         if(!usernameET.equals("") && passwordET.equals("")){
+            //validateUser("http://192.168.1.128/tfg/validate_user.php");
+            //hola
             validateUser("http://192.168.1.67/tfg/validate_user.php");
         }else{
             Toast.makeText(getApplicationContext(), "Write username and password", Toast.LENGTH_SHORT).show();
