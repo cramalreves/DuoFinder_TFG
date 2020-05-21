@@ -69,8 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchHomeActivity(View view) {
-       // validateUser("http://192.168.1.67/tfg/validate_user.php");
-        validateUser("http://192.168.1.128/tfg/validate_user.php");
+        validateUser("http://192.168.1.67/tfg/validate_user.php");
     }
 
     public void launchNewUserActivity(View view) {
