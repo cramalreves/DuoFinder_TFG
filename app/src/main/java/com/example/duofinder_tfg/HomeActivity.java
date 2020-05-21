@@ -1,7 +1,11 @@
 package com.example.duofinder_tfg;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +26,15 @@ public class HomeActivity extends AppCompatActivity implements SwipeStack.SwipeS
         users=getUsers();
         adapter= new SwipeAdapter(this, users);
         swipeStack.setAdapter(adapter);
+    }
+
+    public void exit(View view){
+        SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
+        preferences.edit().clear().commit();
+
+        Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private ArrayList <Usuario> getUsers(){
