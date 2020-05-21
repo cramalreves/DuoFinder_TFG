@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    private String username, password;
     EditText usernameET, passwordET;
     private boolean kli;
     RequestQueue requestQueue;
@@ -69,7 +68,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchHomeActivity(View view) {
-        validateUser("http://192.168.1.67/tfg/validate_user.php");
+        if(!usernameET.equals("") && passwordET.equals("")){
+            validateUser("http://192.168.1.67/tfg/validate_user.php");
+        }else{
+            Toast.makeText(getApplicationContext(), "Write username and password", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void launchNewUserActivity(View view) {
