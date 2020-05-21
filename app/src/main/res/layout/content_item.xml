@@ -5,39 +5,40 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     card_view:cardCornerRadius="15dp"
-    android:layout_marginTop="100dp">
-
-    <ImageView
-        android:id="@+id/imgUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:src="@drawable/icon1" />
+    android:layout_marginTop="100dp"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#8c000000"
-        android:gravity="bottom"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
 
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="#ffe3e3e3" />
+            android:scaleType="fitStart"
+            android:src="@drawable/icon1" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_gravity="bottom"
+            android:background="#8c000000"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#ffe3e3e3" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -46,44 +47,36 @@
                 android:layout_weight="1"
                 card_view:srcCompat="@drawable/adc" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                card_view:srcCompat="@drawable/challenger" />
-
-            <TextView
-                android:id="@+id/txtElo"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="TextView"
-                android:textColor="#ffe3e3e3" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    card_view:srcCompat="@drawable/challenger" />
 
-            <FrameLayout
-                android:id="@+id/imagemaskframe"
+                <TextView
+                    android:id="@+id/txtElo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textColor="#ffe3e3e3" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp" >
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imageView8"
@@ -91,37 +84,30 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:scaleType="fitXY"
                     card_view:srcCompat="@drawable/akali"
-                    android:scaleType="fitXY" />
+                    android:padding="3dp"/>
 
                 <ImageView
-                    android:id="@+id/iv_mask_op"
+                    android:id="@+id/imageView7"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/circle_mask" />
+                    android:layout_weight="1"
+                    card_view:srcCompat="@drawable/ahri"
+                    />
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    card_view:srcCompat="@drawable/aatrox"
+                    android:padding="3dp"/>
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                card_view:srcCompat="@drawable/ahri" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                card_view:srcCompat="@drawable/aatrox" />
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -44,8 +44,8 @@ public class SwipeAdapter extends ArrayAdapter<Usuario> {
         TextView txtName = convertView.findViewById(R.id.txtName);
         TextView txtElo = convertView.findViewById(R.id.txtElo);
 
-
-        Glide.with(activity).load(user.getImagen()).into(imgUser);
+        imgUser.setImageResource(user.getImagen());
+      //  Glide.with(activity).load(user.getImagen()).into(imgUser);
         txtName.setText(user.getNombre());
         txtElo.setText(user.getElo());
 
