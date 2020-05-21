@@ -1,33 +1,32 @@
 package com.example.duofinder_tfg;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+    String username, password;
     EditText usernameET, passwordET;
-    private boolean kli;
+    private boolean keepConnected;
     RequestQueue requestQueue;
+    CheckBox keepCBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         usernameET = findViewById(R.id.usernameET);
         passwordET = findViewById(R.id.passwordET);
+        keepCBox = findViewById(R.id.keepCBox);
+        getLoginPreferences();
     }
 
     public void validateUser(String URL){
@@ -42,9 +43,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
+                    savePreferences();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(), "Username or password are incorrect", Toast.LENGTH_SHORT).show();
                 }
@@ -56,10 +59,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams(){
                 Map<String, String> parameters=new HashMap<>();
-                parameters.put("username", usernameET.getText().toString());
-                parameters.put("password", passwordET.getText().toString());
+                parameters.put("username", username);
+                parameters.put("password", password);
                 return parameters;
             }
         };
@@ -68,13 +71,30 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchHomeActivity(View view) {
-        if(!usernameET.equals("") && passwordET.equals("")){
+        username = usernameET.getText().toString();
+        password = passwordET.getText().toString();
+        keepConnected = keepCBox.isChecked();
+        if(!username.isEmpty() && !password.isEmpty()){
             //validateUser("http://192.168.1.128/tfg/validate_user.php");
-            //hola
             validateUser("http://192.168.1.67/tfg/validate_user.php");
         }else{
             Toast.makeText(getApplicationContext(), "Write username and password", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void savePreferences(){
+        SharedPreferences preferences = getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.putBoolean("keep", keepConnected);
+        editor.commit();
+    }
+
+    private void getLoginPreferences(){
+        SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
+        usernameET.setText(preferences.getString("usuario", "Example77"));
+        passwordET.setText(preferences.getString("password", "1234"));
     }
 
     public void launchNewUserActivity(View view) {
