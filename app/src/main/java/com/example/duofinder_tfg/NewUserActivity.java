@@ -41,7 +41,8 @@ public class NewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
         champs = new String[148];
-        searchAllChamps("http://192.168.1.67/tfg/buscar.php");
+//      searchAllChamps("http://192.168.1.67/tfg/searchAllChamps.php");
+        searchAllChamps("http://192.168.1.128/tfg/searchAllChamps.php");
         setSpinners();
         usernameET = findViewById(R.id.usernameET);
         passwordET = findViewById(R.id.passwordET);
@@ -129,7 +130,8 @@ public class NewUserActivity extends AppCompatActivity {
         }else{
             verify_passwordET.setError("Passwords aren't the same");
         }*/
-        executeService("http://192.168.1.67/tfg/insert_user.php");
+       // executeService("http://192.168.1.67/tfg/insert_user.php");
+        executeService("http://192.168.1.128/tfg/insert_user.php");
     }
 
     private void executeService(String URL){
