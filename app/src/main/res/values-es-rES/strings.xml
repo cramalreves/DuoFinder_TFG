@@ -10,9 +10,11 @@
     <string name="main2">Selecciona un campeón secundario</string>
     <string name="photo">Foto de perfil</string>
     <string name="discord">Nombre de usuario de discord</string>
+    <string name="signinText">No tienes cuenta?</string>
     <string name="signin">Registrarse</string>
-    <string name="login">Iniciar sesión</string>
+    <string name="login">INICIAR SESIÓN</string>
     <string name="KLI">Mantener sesión iniciada</string>
+    <string name="copyright">Copyright © 2020 Todos los derechos reservados.</string>
     <string name="verify_password">Verificar contraseña</string>
     <string name="summoner_name">Nombre de invocador</string>
     <string name="elo">Liga</string>

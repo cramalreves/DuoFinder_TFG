@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     xmlns:Android="http://schemas.android.com/tools"
     android:layout_gravity="center_horizontal"
-    card_view:cardCornerRadius="15dp"
+    card_view:cardCornerRadius="5dp"
     card_view:cardElevation="2dp"
     android:layout_marginTop="100dp">
 
@@ -40,6 +40,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="Stellaa37"
+                android:fontFamily="@font/mark_black"
                 android:textColor="#ffe3e3e3" />
 
             <ImageView
@@ -61,6 +62,7 @@
             android:layout_weight="1"
             android:text="EUW"
             android:alpha = ".5"
+            android:fontFamily="@font/mark_medium"
             android:paddingBottom="10dp"
             android:textColor="#ffe3e3e3"
             />
@@ -89,11 +91,10 @@
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:padding="2dp"
                     card_view:srcCompat="@drawable/challenger" />
 
                 <TextView
@@ -103,6 +104,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="Challenger"
+                    android:alpha = ".5"
+                    android:fontFamily="@font/mark_black"
                     android:textColor="#ffe3e3e3" />
             </LinearLayout>
 

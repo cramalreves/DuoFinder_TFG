@@ -25,10 +25,12 @@
     <string name="main3">Select third main champ</string>
     <string name="photo">Profile photo</string>
     <string name="discord">Discord username</string>
-    <string name="login">Login</string>
-    <string name="signin">Sign In</string>
+    <string name="login">LOGIN</string>
+    <string name="signinText">Don\'t have an account yet?</string>
+    <string name="signin">Sign up here</string>
     <string name="elo">Elo solo/queue</string>
     <string name="KLI">Keep logged in</string>
+    <string name="copyright">Copyright © 2020 All rights reserved.</string>
     <string name="verify_password">Verify password</string>
     <string name="summoner_name">Summoner name</string>
     <string name="iron4">Iron IV</string>
