@@ -11,6 +11,8 @@
         android:id="@+id/usernameET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="300dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName" />
@@ -19,6 +21,8 @@
         android:id="@+id/passwordET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword" />
@@ -27,19 +31,31 @@
         android:id="@+id/keepCBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="10dp"
         android:text="@string/KLI" />
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:onClick="launchHomeActivity"
-        android:text="@string/login" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/signinTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="launchNewUserActivity"
-        android:text="@string/signin" />
+        <Button
+            android:id="@+id/login"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="launchHomeActivity"
+            android:text="@string/login" />
+
+        <Button
+            android:id="@+id/signinTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:onClick="launchNewUserActivity"
+            android:text="@string/signin" />
+    </LinearLayout>
+
 </LinearLayout>
