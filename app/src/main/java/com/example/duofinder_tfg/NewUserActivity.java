@@ -14,13 +14,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -75,11 +70,11 @@ public class NewUserActivity extends AppCompatActivity {
         }else{
             verify_passwordET.setError("Passwords aren't the same");
         }*/
-        //executeService("http://192.168.1.128/tfg/insert_user.php");
-        insert("http://192.168.1.67/tfg/insert_user.php");
+        //insert("http://192.168.1.128/tfg/insert_user.php");
+        insertUser("http://192.168.1.67/tfg/insert_user.php");
     }
 
-    private void insert(String URL){
+    private void insertUser(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -159,7 +154,6 @@ public class NewUserActivity extends AppCompatActivity {
                 parameters.put("discord","Patricio");
                 parameters.put("opgg","hola");
                 parameters.put("photo","poro.png");*/
-
 
                 return parameters;
             }
