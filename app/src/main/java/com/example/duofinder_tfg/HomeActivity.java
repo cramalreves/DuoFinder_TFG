@@ -4,9 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
 
@@ -17,6 +25,9 @@ public class HomeActivity extends AppCompatActivity implements SwipeStack.SwipeS
     SwipeAdapter adapter;
     ArrayList<Usuario> users;
 
+    private TextView textView;
+    private BottomBar bottomBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +36,22 @@ public class HomeActivity extends AppCompatActivity implements SwipeStack.SwipeS
         users=getUsers();
         adapter= new SwipeAdapter(this, users);
         swipeStack.setAdapter(adapter);
+
+        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setDefaultTab(R.id.tab_home);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                if (tabId == R.id.tab_profile) {
+
+                } else if (tabId == R.id.tab_home) {
+
+                } else if (tabId == R.id.tab_notis) {
+                    Intent intent=new Intent(getApplicationContext(), NotificationActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     public void exit(View view){

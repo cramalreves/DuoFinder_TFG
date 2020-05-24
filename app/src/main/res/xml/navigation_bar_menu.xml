@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_profile"
+        icon="@drawable/ic_person_black_24dp"
+        activeColor="#FFC107"
+        />
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_home_black_24dp"
+        activeColor="#FFC107" />
+    <tab
+        id="@+id/tab_notis"
+        icon="@drawable/ic_notifications_black_24dp"
+        activeColor="#FFC107"/>
+</tabs>
