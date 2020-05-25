@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
                 boolean keepConnected=preferences.getBoolean("keep", false);
                 if(keepConnected){
-                    Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent intent=new Intent(getApplicationContext(), MenuBottomActivity.class);
                     startActivity(intent);
                 }else{
                     Intent intent=new Intent(getApplicationContext(), LoginActivity.class);

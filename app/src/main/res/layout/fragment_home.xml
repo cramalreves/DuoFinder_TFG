@@ -38,7 +38,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:onClick="dislike"
-        android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"/>
 
 
 
@@ -54,15 +54,4 @@
 
 
     </TableRow>
-
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-1dp"
-        android:background="@drawable/border"
-        app:bb_behavior="underNavbar"
-        app:bb_tabXmlResource="@xml/navigation_bar_menu" />
-
 </RelativeLayout>
