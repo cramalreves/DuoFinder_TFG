@@ -1,113 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".NewUserActivity">
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="130dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon5" />
+
     <EditText
-        android:id="@+id/usernameET"
-        android:layout_width="match_parent"
+        android:id="@+id/edtUsername"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="196dp"
         android:ems="10"
         android:hint="@string/username"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/summoner_nameET"
-        android:layout_width="match_parent"
+        android:id="@+id/edtPwd"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="@string/summoner_name"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/serverTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/server" />
-
-    <Spinner
-        android:id="@+id/serverSP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/eloTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/elo" />
-
-    <Spinner
-        android:id="@+id/eloSP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/roleTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/role" />
-
-    <Spinner
-        android:id="@+id/roleSP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/main1TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main1" />
-
-    <Spinner
-        android:id="@+id/main1SP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/main2TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main2" />
-
-    <Spinner
-        android:id="@+id/main2SP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/main3TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main3" />
-
-    <Spinner
-        android:id="@+id/main3SP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/discordTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/discord" />
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDiscord" />
 
     <EditText
-        android:id="@+id/discordET"
-        android:layout_width="match_parent"
+        android:id="@+id/edtVerifyPwd"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPwd" />
+
+    <EditText
+        android:id="@+id/edtDiscord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/discord"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
+
+    <Spinner
+        android:id="@+id/imageSP"
+        android:layout_width="149dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtVerifyPwd" />
 
     <Button
-        android:id="@+id/validate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="117dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:onClick="onClickRegister"
-        android:text="@string/validate" />
+        android:text="add user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageSP" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

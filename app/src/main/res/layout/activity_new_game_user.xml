@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewGameUserActivity">
+
+    <EditText
+        android:id="@+id/summoner_nameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/summoner_name"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/serverTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/server" />
+
+    <Spinner
+        android:id="@+id/serverSP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/eloTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/elo" />
+
+    <Spinner
+        android:id="@+id/eloSP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/roleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/role" />
+
+    <Spinner
+        android:id="@+id/roleSP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/main1TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main1" />
+
+    <Spinner
+        android:id="@+id/main1SP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/main2TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main2" />
+
+    <Spinner
+        android:id="@+id/main2SP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/main3TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main3" />
+
+    <Spinner
+        android:id="@+id/main3SP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/validate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickRegister"
+        android:text="@string/validate" />
+
+</LinearLayout>

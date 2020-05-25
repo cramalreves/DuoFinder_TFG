@@ -1,15 +1,13 @@
 package com.example.duofinder_tfg;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,57 +19,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NewUserActivity extends AppCompatActivity {
-    private EditText usernameET, summoner_nameET;
-    private Spinner serverSP, rolesSP, champ1SP, champ2SP, champ3SP, elosSP;
-    private CustomAdapter champsAdapter, elosAdapter, rolesAdapter;
-    private RequestQueue requestQueue;
+    private EditText edtPwdVerify, edtUsername, edtPwd, edtDiscord;
+    private Spinner photoSP, gamesSP;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
-        setSpinners();
-        usernameET = findViewById(R.id.usernameET);
-        summoner_nameET = findViewById(R.id.summoner_nameET);
-    }
 
-    public void setSpinners(){
-        champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
-        champ1SP = (Spinner)findViewById(R.id.main1SP);
-        champ1SP.setAdapter(champsAdapter);
+        edtPwdVerify = findViewById(R.id.edtVerifyPwd);
+        edtUsername = findViewById(R.id.edtUsername);
+        edtPwd = findViewById(R.id.edtPwd);
+        edtDiscord = findViewById(R.id.edtDiscord);
 
-        champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
-        champ2SP = (Spinner)findViewById(R.id.main2SP);
-        champ2SP.setAdapter(champsAdapter);
+        CustomAdapter photoAdapter = new CustomAdapter(this,Images.profilePhoto,Images.profilePhotoImages);
+        photoSP = (Spinner)findViewById(R.id.imageSP);
+        photoSP.setAdapter(photoAdapter);
 
-        champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
-        champ3SP = (Spinner)findViewById(R.id.main3SP);
-        champ3SP.setAdapter(champsAdapter);
-
-        elosAdapter = new CustomAdapter(this,Images.elos,Images.elosImages);
-        elosSP = (Spinner)findViewById(R.id.eloSP);
-        elosSP.setAdapter(elosAdapter);
-
-        rolesAdapter = new CustomAdapter(this,Images.roles,Images.rolesImages);
-        rolesSP = (Spinner)findViewById(R.id.roleSP);
-        rolesSP.setAdapter(rolesAdapter);
-
-        ArrayAdapter<String> serversAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, Images.servers);
-        serverSP = (Spinner)findViewById(R.id.serverSP);
-        serversAdapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-        serverSP.setAdapter(serversAdapter);
     }
 
     public void onClickRegister(View view){
-        /*if(passwordET.getText().equals(verify_passwordET.getText())){
-            executeService("https://192.168.1.67/tfg/insert_user.php");
+        /*if(edtUsername.getText().toString() == edtPwdVerify.getText().toString()){
+            insertUser("http://192.168.1.67/tfg/insertNewUser.php");
         }else{
-            verify_passwordET.setError("Passwords aren't the same");
+            edtPwdVerify.setError("Passwords aren't the same");
         }*/
-        //insert("http://192.168.1.128/tfg/insert_user.php");
-        insertUser("http://192.168.1.67/tfg/insert_user.php");
+        insertUser("http://192.168.1.67/tfg/insertNewUser.php");
     }
 
     private void insertUser(String URL){
@@ -89,23 +63,19 @@ public class NewUserActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> parameters=new HashMap<>();
-                /*parameters.put("username",usernameET.getText().toString());
-                parameters.put("summoner_name",summoner_nameET.getText().toString());
-                parameters.put("server",serverSP.getSelectedItem().toString());
-                parameters.put("elo",elosSP.getSelectedItem().toString());
-                parameters.put("role",rolesSP.getSelectedItem().toString());
-                parameters.put("firstMain",champ1SP.getSelectedItem().toString());
-                parameters.put("secondMain",champ2SP.getSelectedItem().toString());
-                parameters.put("thirdMain",champ3SP.getSelectedItem().toString());*/
+                parameters.put("username", edtUsername.getText().toString());
+                parameters.put("password", edtPwd.getText().toString());
+                parameters.put("discord", edtDiscord.getText().toString());
+                parameters.put("photo", photoSP.getSelectedItem().toString());
 
-                parameters.put("username","admin");
+                /*parameters.put("username","admin");
                 parameters.put("summoner_name","administrador");
                 parameters.put("server","EUW");
                 parameters.put("elo","Bronce III");
                 parameters.put("role","TOP");
                 parameters.put("firstMain","Bard");
                 parameters.put("secondMain","Aatrox");
-                parameters.put("thirdMain","Morgana");
+                parameters.put("thirdMain","Morgana");*/
 
                 return parameters;
             }
@@ -113,78 +83,4 @@ public class NewUserActivity extends AppCompatActivity {
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-    private void executeService(String URL){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "Sucessfully", Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError{
-                Map<String, String> parameters=new HashMap<>();
-                /*parameters.put("username",usernameET.getText().toString());
-                parameters.put("password",passwordET.getText().toString());
-                parameters.put("summoner_name",summoner_nameET.getText().toString());
-                parameters.put("server",serverSP.getSelectedItem().toString());
-                parameters.put("elo",elosSP.getSelectedItem().toString());
-                parameters.put("role",rolesSP.getSelectedItem().toString());
-                parameters.put("firstMain",champ1SP.getSelectedItem().toString());
-                parameters.put("secondMain",champ2SP.getSelectedItem().toString());
-                parameters.put("thirdMain",champ3SP.getSelectedItem().toString());
-                parameters.put("discord",discordET.getText().toString());
-                parameters.put("opgg","https://"+serverSP.getSelectedItem().toString()+".op.gg/summoner/userName="+summoner_nameET.getText().toString());
-                parameters.put("photo","poro.png");*/
-
-                /*parameters.put("username","Patricio");
-                parameters.put("password","123456789");
-                parameters.put("summoner_name","123456789");
-                parameters.put("server","EUW");
-                parameters.put("elo","Bronce III");
-                parameters.put("role","TOP");
-                parameters.put("firstMain","Bard");
-                parameters.put("secondMain","Aatrox");
-                parameters.put("thirdMain","Morgana");
-                parameters.put("discord","Patricio");
-                parameters.put("opgg","hola");
-                parameters.put("photo","poro.png");*/
-
-                return parameters;
-            }
-        };
-        requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
-    /*public void searchAllChamps(String URL){
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-
-                for (int i=0; i < response.length(); i++){
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        champs[i]=jsonObject.getString("name");
-                    }catch(JSONException error){
-                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(jsonArrayRequest);
-    }*/
 }
-

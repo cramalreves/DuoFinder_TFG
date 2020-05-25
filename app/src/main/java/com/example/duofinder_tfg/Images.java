@@ -41,6 +41,10 @@ public class Images {
     private Map<String, Integer> elosMap = new HashMap<>();
     private Map<String, Integer> rolesMap = new HashMap<>();
 
+    static final String[] profilePhoto = new String[]{"1","2","3","4","5","6","7","8","9"};
+
+    static final int[] profilePhotoImages = new int[]{R.drawable.aatrox, R.drawable.ahri, R.drawable.akali, R.drawable.alistar, R.drawable.amumu, R.drawable.anivia, R.drawable.annie, R.drawable.aphelios, R.drawable.ashe};
+
 
     static final String[] champs = new String[]{"Aatrox","Ahri","Akali","Alistar","Amumu","Anivia","Annie","Aphelios","Ashe","Aurelion Sol","Azir","Bard","Blitzcrank","Brand","Braum","Caitlyn",
             "Camille","Cassiopeia","Cho'Gath","Corki","Darius","Diana","Dr. Mundo","Draven","Ekko","Elise","Evelynn","Ezreal","Fiddlesticks","Fiora","Fizz","Galio","Gangplank","Garen",

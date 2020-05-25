@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchNewUserActivity(View view) {
-        Intent i = new Intent(this, NewUserActivity.class);
+        Intent i = new Intent(this, NewGameUserActivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
