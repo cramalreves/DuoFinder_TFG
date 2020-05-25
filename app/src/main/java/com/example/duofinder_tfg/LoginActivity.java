@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
         keepConnected = keepCBox.isChecked();
         if(!username.isEmpty() && !password.isEmpty()){
             validateUser("http://192.168.1.67/tfg/validate_user.php");
-            //validateUser("http://192.168.1.128/tfg/validate_user.php");
         }else{
             Toast.makeText(getApplicationContext(), "Write username and password", Toast.LENGTH_SHORT).show();
         }

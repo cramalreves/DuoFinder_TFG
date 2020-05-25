@@ -68,15 +68,6 @@ public class NewUserActivity extends AppCompatActivity {
                 parameters.put("discord", edtDiscord.getText().toString());
                 parameters.put("photo", photoSP.getSelectedItem().toString());
 
-                /*parameters.put("username","admin");
-                parameters.put("summoner_name","administrador");
-                parameters.put("server","EUW");
-                parameters.put("elo","Bronce III");
-                parameters.put("role","TOP");
-                parameters.put("firstMain","Bard");
-                parameters.put("secondMain","Aatrox");
-                parameters.put("thirdMain","Morgana");*/
-
                 return parameters;
             }
         };

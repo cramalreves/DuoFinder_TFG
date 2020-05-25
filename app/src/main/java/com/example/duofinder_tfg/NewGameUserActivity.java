@@ -8,8 +8,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -78,7 +76,7 @@ public class NewGameUserActivity extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "Sucessfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Succesfully", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener(){
             @Override
@@ -97,15 +95,6 @@ public class NewGameUserActivity extends AppCompatActivity {
                 parameters.put("firstMain",champ1SP.getSelectedItem().toString());
                 parameters.put("secondMain",champ2SP.getSelectedItem().toString());
                 parameters.put("thirdMain",champ3SP.getSelectedItem().toString());
-
-                /*parameters.put("username","admin");
-                parameters.put("summoner_name","administrador");
-                parameters.put("server","EUW");
-                parameters.put("elo","Bronce III");
-                parameters.put("role","TOP");
-                parameters.put("firstMain","Bard");
-                parameters.put("secondMain","Aatrox");
-                parameters.put("thirdMain","Morgana");*/
 
                 return parameters;
             }
