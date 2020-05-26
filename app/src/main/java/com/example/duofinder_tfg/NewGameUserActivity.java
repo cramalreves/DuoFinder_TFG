@@ -12,8 +12,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,15 +40,15 @@ public class NewGameUserActivity extends AppCompatActivity {
 
     public void setSpinners(){
         champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
-        champ1SP = (Spinner)findViewById(R.id.main1SP);
+        champ1SP = (Spinner)findViewById(R.id.imageMain1);
         champ1SP.setAdapter(champsAdapter);
 
         champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
-        champ2SP = (Spinner)findViewById(R.id.main2SP);
+        champ2SP = (Spinner)findViewById(R.id.imageMain2);
         champ2SP.setAdapter(champsAdapter);
 
         champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
-        champ3SP = (Spinner)findViewById(R.id.main3SP);
+        champ3SP = (Spinner)findViewById(R.id.imageMain3);
         champ3SP.setAdapter(champsAdapter);
 
         elosAdapter = new CustomAdapter(this,Images.elos,Images.elosImages);
@@ -56,7 +61,7 @@ public class NewGameUserActivity extends AppCompatActivity {
 
         ArrayAdapter<String> serversAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, Images.servers);
-        serverSP = (Spinner)findViewById(R.id.serverSP);
+        serverSP = (Spinner)findViewById(R.id.textServer);
         serversAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         serverSP.setAdapter(serversAdapter);
@@ -112,7 +117,7 @@ public class NewGameUserActivity extends AppCompatActivity {
                 for (int i=0; i < response.length(); i++){
                     try {
                         jsonObject = response.getJSONObject(i);
-                        champs[i]=jsonObject.getString("name");
+                        jsonObject.getString("name");
                     }catch(JSONException error){
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }

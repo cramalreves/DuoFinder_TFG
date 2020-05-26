@@ -41,9 +41,11 @@ public class Images {
     private Map<String, Integer> elosMap = new HashMap<>();
     private Map<String, Integer> rolesMap = new HashMap<>();
 
-    static final String[] profilePhoto = new String[]{"1","2","3","4","5","6","7","8","9"};
+    static final String[] profilePhoto = new String[]{"1","2","3","4","5","6","7","8"};
 
-    static final int[] profilePhotoImages = new int[]{R.drawable.aatrox, R.drawable.ahri, R.drawable.akali, R.drawable.alistar, R.drawable.amumu, R.drawable.anivia, R.drawable.annie, R.drawable.aphelios, R.drawable.ashe};
+    static String[] userProfileInfo = new String[7];
+
+    static final int[] profilePhotoImages = new int[]{R.drawable.icon1, R.drawable.icon2, R.drawable.icon3, R.drawable.icon4, R.drawable.icon5, R.drawable.icon6, R.drawable.icon7, R.drawable.icon8};
 
 
     static final String[] champs = new String[]{"Aatrox","Ahri","Akali","Alistar","Amumu","Anivia","Annie","Aphelios","Ashe","Aurelion Sol","Azir","Bard","Blitzcrank","Brand","Braum","Caitlyn",
@@ -62,6 +64,10 @@ public class Images {
     public int getChampImageId(String champ){
         int id = championsMap.get(champ);
         return id;
+    }
+
+    public static void addToUserProfleInfo(String atribute, int i){
+        userProfileInfo[i] = atribute;
     }
 
     public int getRoleImageId(String role){
