@@ -7,33 +7,37 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MenuBottomActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
+import link.fls.swipestack.SwipeStack;
+
+public class MenuBottomActivity extends AppCompatActivity {
+    SwipeStack swipeStack;
+    SwipeAdapter adapter;
+    ArrayList<Usuario> users;
+    private TextView textView;
     BottomNavigationView mBottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_bottom);
-
         showSelectedFragment(new HomeFragment());
-
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                if (menuItem.getItemId()==R.id.profile){
+                if (menuItem.getItemId() == R.id.profile) {
                     showSelectedFragment(new ProfileFragment());
                 }
-
-                if (menuItem.getItemId()==R.id.home){
+                if (menuItem.getItemId() == R.id.home) {
                     showSelectedFragment(new HomeFragment());
                 }
-                if (menuItem.getItemId()==R.id.notis){
+                if (menuItem.getItemId() == R.id.notis) {
                     showSelectedFragment(new NotisFragment());
                 }
                 return true;
@@ -42,9 +46,20 @@ public class MenuBottomActivity extends AppCompatActivity {
     }
 
     //METODO QUE PERMITE ELEGIR EL FRAFMENT QUE SE MOSTRARA EN EL CONTAINER DEL HOME.
-    private void showSelectedFragment (Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
+    private void showSelectedFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
+
+    private ArrayList<Usuario> getUsers() {
+        ArrayList<Usuario> list = new ArrayList<>();
+        list.add(new Usuario(R.drawable.icon8, "Stellaa37", "Jungle", "Challenger", "Vi", "Kha'Zix", "Camille", false));
+        list.add(new Usuario(R.drawable.icon3, "ZeKroX24", "Mid", "Iron 4", "Ekko", "Sylas", "Fizz", false));
+        list.add(new Usuario(R.drawable.icon2, "SKT Faker", "Mid", "Challenger", "Zed", "Twisted Fate", "Kassadin", false));
+        list.add(new Usuario(R.drawable.icon1, "G2 Perkz", "ADCarry", "Challenger", "Kai'Sa", "Xayah", "Aphelios", false));
+        list.add(new Usuario(R.drawable.icon3, "G2 Ibai", "Top", "Master", "Renekton", "Rumble", "Riven", false));
+        return list;
+    }
+
 }

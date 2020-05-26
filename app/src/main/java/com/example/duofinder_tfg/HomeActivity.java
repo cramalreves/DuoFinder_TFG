@@ -24,7 +24,6 @@ public class HomeActivity extends AppCompatActivity implements SwipeStack.SwipeS
     SwipeStack swipeStack;
     SwipeAdapter adapter;
     ArrayList<Usuario> users;
-
     private TextView textView;
     private BottomBar bottomBar;
 
@@ -37,21 +36,6 @@ public class HomeActivity extends AppCompatActivity implements SwipeStack.SwipeS
         adapter= new SwipeAdapter(this, users);
         swipeStack.setAdapter(adapter);
 
-        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
-        bottomBar.setDefaultTab(R.id.tab_home);
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelected(@IdRes int tabId) {
-                if (tabId == R.id.tab_profile) {
-
-                } else if (tabId == R.id.tab_home) {
-
-                } else if (tabId == R.id.tab_notis) {
-                    Intent intent=new Intent(getApplicationContext(), NotificationActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
     }
 
     public void exit(View view){
