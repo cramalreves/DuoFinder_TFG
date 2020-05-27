@@ -117,7 +117,7 @@ public class NewGameUserActivity extends AppCompatActivity {
                 for (int i=0; i < response.length(); i++){
                     try {
                         jsonObject = response.getJSONObject(i);
-                        jsonObject.getString("name");
+                        champs[i] = jsonObject.getString("name");
                     }catch(JSONException error){
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
