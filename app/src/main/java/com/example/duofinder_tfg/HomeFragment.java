@@ -48,7 +48,25 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         users=getUsers();
         adapter= new SwipeAdapter(this.getActivity(), users);
         swipeStack.setAdapter(adapter);
-        
+
+        swipeStack.setListener(new SwipeStack.SwipeStackListener() {
+            @Override
+            public void onViewSwipedToLeft(int position) {
+                clear.setImageResource(R.drawable.ic_clear_red);
+                textView.setText("adios");
+            }
+
+            @Override
+            public void onViewSwipedToRight(int position) {
+
+            }
+
+            @Override
+            public void onStackEmpty() {
+
+            }
+        });
+
        // Inflate the layout for this fragment
         return rootView;
     }
@@ -72,35 +90,32 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     }
 
     @Override
-    public void onViewSwipedToLeft(int position) {
-        clear.setImageResource(R.drawable.ic_clear_red);
-        textView.setText("adios");
-    }
-
-    @Override
-    public void onViewSwipedToRight(int position) {
-        fav.setImageResource(R.drawable.ic_favorite_blue);
-    }
-
-    @Override
-    public void onStackEmpty() {
-        textView.setText("adios");
-    }
-
-    @Override
     public void onSwipeStart(int position) {
-        textView.setText("adios");
+
     }
 
     @Override
     public void onSwipeProgress(int position, float progress) {
-        textView.setText("adios");
+
     }
 
     @Override
     public void onSwipeEnd(int position) {
-        clear.setImageResource(R.drawable.ic_clear_red);
+
     }
 
+    @Override
+    public void onViewSwipedToLeft(int position) {
 
+    }
+
+    @Override
+    public void onViewSwipedToRight(int position) {
+
+    }
+
+    @Override
+    public void onStackEmpty() {
+
+    }
 }

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,22 +23,33 @@ import java.util.Map;
 public class NewUserActivity extends AppCompatActivity {
     private EditText edtPwdVerify, edtUsername, edtPwd, edtDiscord;
     private Spinner photoSP, gamesSP;
+    private ImageView icon;
     RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
-
         edtPwdVerify = findViewById(R.id.edtVerifyPwd);
         edtUsername = findViewById(R.id.edtUsername);
         edtPwd = findViewById(R.id.edtPwd);
         edtDiscord = findViewById(R.id.edtDiscord);
-
+        icon = findViewById(R.id.icon);
         CustomAdapter photoAdapter = new CustomAdapter(this,Images.profilePhoto,Images.profilePhotoImages);
         photoSP = (Spinner)findViewById(R.id.imageSP);
         photoSP.setAdapter(photoAdapter);
+        photoSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                icon.setImageResource(Images.profilePhotoImages[position]);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
     public void onClickRegister(View view){

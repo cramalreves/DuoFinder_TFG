@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -60,6 +64,15 @@ public class MenuBottomActivity extends AppCompatActivity {
         list.add(new Usuario(R.drawable.icon1, "G2 Perkz", "ADCarry", "Challenger", "Kai'Sa", "Xayah", "Aphelios", false));
         list.add(new Usuario(R.drawable.icon3, "G2 Ibai", "Top", "Master", "Renekton", "Rumble", "Riven", false));
         return list;
+    }
+
+    public void exit(View view){
+        SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
+        preferences.edit().clear().commit();
+
+        Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

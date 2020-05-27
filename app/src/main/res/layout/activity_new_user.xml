@@ -7,7 +7,7 @@
     tools:context=".NewUserActivity">
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/icon"
         android:layout_width="130dp"
         android:layout_height="127dp"
         android:layout_marginStart="32dp"

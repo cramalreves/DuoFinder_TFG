@@ -63,6 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:paddingBottom="2dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:layout_gravity="center"
         android:background="@drawable/mybutton"
         android:fontFamily="@font/mark_black"

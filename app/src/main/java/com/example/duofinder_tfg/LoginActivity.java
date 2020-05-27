@@ -92,12 +92,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getLoginPreferences(){
         SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
-        usernameET.setText(preferences.getString("usuario", "Example77"));
+        usernameET.setText(preferences.getString("usuario", "User"));
         passwordET.setText(preferences.getString("password", "1234"));
     }
 
     public void launchNewUserActivity(View view) {
-        Intent i = new Intent(this, NewGameUserActivity.class);
+        Intent i = new Intent(this, NewUserActivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
