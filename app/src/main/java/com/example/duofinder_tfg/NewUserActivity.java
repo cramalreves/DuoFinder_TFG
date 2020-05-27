@@ -46,7 +46,7 @@ public class NewUserActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
+                // your code here hola
             }
 
         });
