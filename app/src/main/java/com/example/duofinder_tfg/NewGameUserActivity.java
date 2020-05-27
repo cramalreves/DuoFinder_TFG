@@ -28,6 +28,7 @@ public class NewGameUserActivity extends AppCompatActivity {
     private Spinner serverSP, rolesSP, champ1SP, champ2SP, champ3SP, elosSP;
     private CustomAdapter champsAdapter, elosAdapter, rolesAdapter;
     private RequestQueue requestQueue;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,9 @@ public class NewGameUserActivity extends AppCompatActivity {
         setSpinners();
         usernameET = findViewById(R.id.usernameET);
         summoner_nameET = findViewById(R.id.summoner_nameET);
+
+        Bundle bundle = getIntent().getExtras();
+        username = bundle.getString("username");
     }
 
     public void setSpinners(){
@@ -92,7 +96,7 @@ public class NewGameUserActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> parameters=new HashMap<>();
-                parameters.put("username","admin");
+                parameters.put("username",username);
                 parameters.put("summoner_name",summoner_nameET.getText().toString());
                 parameters.put("server",serverSP.getSelectedItem().toString());
                 parameters.put("elo",elosSP.getSelectedItem().toString());

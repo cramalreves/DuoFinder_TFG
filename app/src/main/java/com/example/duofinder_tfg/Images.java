@@ -41,7 +41,7 @@ public class Images {
     private Map<String, Integer> elosMap = new HashMap<>();
     private Map<String, Integer> rolesMap = new HashMap<>();
 
-    static final String[] profilePhoto = new String[]{"1","2","3","4","5","6","7","8"};
+    static final String[] profilePhoto = new String[]{"","","","","","","",""};
 
     static String[] userProfileInfo = new String[7];
 

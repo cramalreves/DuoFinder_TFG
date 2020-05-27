@@ -2,6 +2,7 @@ package com.example.duofinder_tfg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,7 +36,7 @@ public class NewUserActivity extends AppCompatActivity {
         edtPwd = findViewById(R.id.edtPwd);
         edtDiscord = findViewById(R.id.edtDiscord);
         icon = findViewById(R.id.icon);
-        CustomAdapter photoAdapter = new CustomAdapter(this,Images.profilePhoto,Images.profilePhotoImages);
+        CustomAdapterProfile photoAdapter = new CustomAdapterProfile(this,Images.profilePhoto,Images.profilePhotoImages);
         photoSP = (Spinner)findViewById(R.id.imageSP);
         photoSP.setAdapter(photoAdapter);
         photoSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -59,6 +60,13 @@ public class NewUserActivity extends AppCompatActivity {
             edtPwdVerify.setError("Passwords aren't the same");
         }*/
         insertUser("http://192.168.1.67/tfg/insertNewUser.php");
+
+        //Iniciar activity NewGameUser
+        Intent i = new Intent(this, NewGameUserActivity.class);
+
+        //Arrastrar el edtUsername.gettext
+        i.putExtra("username", edtUsername.getText().toString());
+        startActivity(i);
     }
 
     private void insertUser(String URL){
