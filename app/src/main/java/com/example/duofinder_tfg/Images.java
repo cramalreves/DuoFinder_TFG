@@ -43,6 +43,8 @@ public class Images {
 
     static final String[] profilePhoto = new String[]{"1","2","3","4","5","6","7","8"};
 
+    static String[] userProfileInfo = new String[7];
+
     static final int[] profilePhotoImages = new int[]{R.drawable.icon1, R.drawable.icon2, R.drawable.icon3, R.drawable.icon4, R.drawable.icon5, R.drawable.icon6, R.drawable.icon7, R.drawable.icon8};
 
 
@@ -62,6 +64,10 @@ public class Images {
     public int getChampImageId(String champ){
         int id = championsMap.get(champ);
         return id;
+    }
+
+    public static void addToUserProfleInfo(String atribute, int i){
+        userProfileInfo[i] = atribute;
     }
 
     public int getRoleImageId(String role){
