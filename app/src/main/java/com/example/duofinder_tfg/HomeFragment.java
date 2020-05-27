@@ -10,9 +10,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.roughike.bottombar.BottomBar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import link.fls.swipestack.SwipeStack;
 
@@ -26,6 +38,8 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     private ArrayList<Usuario> users;
     private TextView textView;
     private BottomBar bottomBar;
+    private String summoner;
+    private RequestQueue requestQueue;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -41,6 +55,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
         textView = (TextView) rootView.findViewById(R.id.hola);
+        getUser("http://192.168.1.67/tfg/searchUsersProfiles.php");
         users=getUsers();
         adapter= new SwipeAdapter(this.getActivity(), users);
         swipeStack.setAdapter(adapter);
@@ -75,6 +90,35 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         list.add(new Usuario(R.drawable.icon1,"G2 Perkz", "ADCarry", "Challenger", "Kai'Sa", "Xayah", "Aphelios", false));
         list.add(new Usuario(R.drawable.icon3,"G2 Ibai", "Top", "Master", "Renekton", "Rumble", "Riven", false));
         return list;
+    }
+
+    private void getUser(String URL){
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    summoner = jsonArray.getJSONObject(0).getString("value");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> parameters=new HashMap<>();
+                parameters.put("elo", "Bronze II");
+
+                return parameters;
+            }
+        };
+        requestQueue= Volley.newRequestQueue(this.getActivity());
+        requestQueue.add(request);
     }
 
     public void like( View view){
