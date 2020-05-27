@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getLoginPreferences(){
         SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
-        usernameET.setText(preferences.getString("usuario", "User"));
+        usernameET.setText(preferences.getString("username", "User"));
         passwordET.setText(preferences.getString("password", "1234"));
     }
 

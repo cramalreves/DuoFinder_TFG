@@ -1,5 +1,7 @@
 package com.example.duofinder_tfg;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +34,7 @@ import java.util.Map;
  */
 public class ProfileFragment extends Fragment {
     private RequestQueue requestQueue;
-    String summoner_name, server, elo, role, main1, main2, main3;
+    String user, summoner_name, server, elo, role, main1, main2, main3;
     StringRequest stringRequest;
     TextView textServer, textElo, textSummoner;
     ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole;
@@ -58,9 +60,11 @@ public class ProfileFragment extends Fragment {
         imageElo = rootView.findViewById(R.id.imageElo);
         imageRole = rootView.findViewById(R.id.imageRole);
         getUserAtributes("http://192.168.1.67/tfg/searchUserProfile.php");
+        SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
+        user = prefs.getString("username", "example_user");
 
 
-        //textSummoner.setText();
+        textSummoner.setText(user);
         //textServer.setText();
         //textElo.setText();
         /*imageElo.setImageResource(img.getEloImageId());
@@ -73,7 +77,6 @@ public class ProfileFragment extends Fragment {
     }
 
     /*private void getUserAtributes(String URL){
-        final String usuario = "ZeKroX24";
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

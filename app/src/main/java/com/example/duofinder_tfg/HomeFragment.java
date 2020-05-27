@@ -1,9 +1,5 @@
 package com.example.duofinder_tfg;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -40,7 +36,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                              Bundle savedInstanceState) {
         //swipeStack=getView().findViewById(R.id.swipeStack);
 
-        View rootView = inflater.inflate(R.layout.fragment_home2, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
