@@ -20,9 +20,9 @@
     <string name="password">Password</string>
     <string name="role">Role</string>
     <string name="server">Server</string>
-    <string name="main1">Select Main champ</string>
-    <string name="main2">Select second main champ</string>
-    <string name="main3">Select third main champ</string>
+    <string name="main1">Main champ</string>
+    <string name="main2">Second main champ</string>
+    <string name="main3">Third main champ</string>
     <string name="photo">Profile photo</string>
     <string name="discord">Discord username</string>
     <string name="login">LOGIN</string>

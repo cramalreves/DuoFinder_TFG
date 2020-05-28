@@ -5,9 +5,9 @@
     <string name="password">Contraseña</string>
     <string name="role">Rol</string>
     <string name="server">Servidor</string>
-    <string name="main1">Selecciona un campeón principal</string>
-    <string name="main3">Selecciona un campeón tercero</string>
-    <string name="main2">Selecciona un campeón secundario</string>
+    <string name="main1">Campeón principal</string>
+    <string name="main3">Campeón terciario</string>
+    <string name="main2">Campeón secundario</string>
     <string name="photo">Foto de perfil</string>
     <string name="discord">Usuario de Discord</string>
     <string name="signinText">No tienes cuenta?</string>
