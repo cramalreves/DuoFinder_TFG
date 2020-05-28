@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +50,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Images img = new Images();
+
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         textElo = rootView.findViewById(R.id.textElo);
@@ -64,7 +66,7 @@ public class ProfileFragment extends Fragment {
         user = prefs.getString("username", "example_user");
 
 
-        textSummoner.setText(user);
+        //textSummoner.setText(user);
         //textServer.setText();
         //textElo.setText();
         /*imageElo.setImageResource(img.getEloImageId());
@@ -76,67 +78,33 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    /*private void getUserAtributes(String URL){
-        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+    private void getUserAtributes(String URL){
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username=ZeKroX24", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+                    Images img = new Images();
                     JSONArray jsonArray = new JSONArray(response);
                     textSummoner.setText(jsonArray.getJSONObject(0).getString("value"));
+                    textServer.setText(jsonArray.getJSONObject(1).getString("value"));
+                    textElo.setText(jsonArray.getJSONObject(2).getString("value"));
+                    imageElo.setImageResource(img.getEloImageId(jsonArray.getJSONObject(2).getString("value")));
+                    imageRole.setImageResource(img.getRoleImageId(jsonArray.getJSONObject(3).getString("value")));
+                    imageMain1.setImageResource(img.getChampImageId(jsonArray.getJSONObject(4).getString("value")));
+                    imageMain2.setImageResource(img.getChampImageId(jsonArray.getJSONObject(5).getString("value")));
+                    imageMain3.setImageResource(img.getChampImageId(jsonArray.getJSONObject(6).getString("value")));
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters=new HashMap<>();
-                parameters.put("username", usuario);
-                return parameters;
-            }
-        };
+        });
         requestQueue = Volley.newRequestQueue(this.getActivity());
         requestQueue.add(request);
-    }*/
-
-
-    private void getUserAtributes(String URL) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i=0; i < response.length(); i++){
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        if(i==0){
-                            textSummoner.setText(jsonObject.getString("name"));
-                        }
-                    }catch(JSONException error){
-                        error.printStackTrace();
-                    }
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });/*{
-            @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> parameters=new HashMap<>();
-                parameters.put("username", "ZeKroX24");
-                return parameters;
-            }
-        };*/
-        requestQueue = Volley.newRequestQueue(this.getActivity());
-        requestQueue.add(jsonArrayRequest);
     }
 
 }
