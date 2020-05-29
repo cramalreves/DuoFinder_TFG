@@ -65,6 +65,7 @@ public class ProfileFragment extends Fragment {
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         user = prefs.getString("username", "example_user");
 
+
         //textSummoner.setText(user);
         //textServer.setText();
         //textElo.setText();
@@ -74,6 +75,7 @@ public class ProfileFragment extends Fragment {
         imageMain2.setImageResource(img.getChampImageId());
         imageMain3.setImageResource(img.getChampImageId());*/
         return rootView;
+
     }
 
     private void getUserAtributes(String URL){
