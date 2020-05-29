@@ -26,20 +26,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
     private RequestQueue requestQueue;
-    String user, summoner_name, server, elo, role, main1, main2, main3;
-    StringRequest stringRequest;
-    TextView textServer, textElo, textSummoner;
-    ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole;
+    private String user;
+    private TextView textServer, textElo, textSummoner;
+    private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole;
 
 
     public ProfileFragment() {
@@ -64,16 +58,8 @@ public class ProfileFragment extends Fragment {
         getUserAtributes("http://192.168.1.67/tfg/searchUserProfile.php");
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         user = prefs.getString("username", "example_user");
-
-        //textSummoner.setText(user);
-        //textServer.setText();
-        //textElo.setText();
-        /*imageElo.setImageResource(img.getEloImageId());
-        imageRole.setImageResource(img.getRoleImageId());
-        imageMain1.setImageResource(img.getChampImageId());
-        imageMain2.setImageResource(img.getChampImageId());
-        imageMain3.setImageResource(img.getChampImageId());*/
         return rootView;
+
     }
 
     private void getUserAtributes(String URL){

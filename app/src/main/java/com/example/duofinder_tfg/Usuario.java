@@ -3,6 +3,7 @@ package com.example.duofinder_tfg;
 public class Usuario {
     private String nombre;
     private int imagen;
+    private String server;
     private String rol;
     private String elo;
     private String champ1;
@@ -10,9 +11,10 @@ public class Usuario {
     private String champ3;
     private boolean like;
 
-    Usuario(int image, String name, String rol, String elo, String champ1, String champ2, String champ3, boolean like){
+    Usuario(int image, String name, String server, String elo, String rol, String champ1, String champ2, String champ3, boolean like){
         this.imagen = image;
         this.nombre= name;
+        this.server = server;
         this.rol=rol;
         this.elo=elo;
         this.champ1=champ1;

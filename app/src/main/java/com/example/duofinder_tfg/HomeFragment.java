@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -49,14 +50,14 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //swipeStack=getView().findViewById(R.id.swipeStack);
-
+        users = new ArrayList<>();
+        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
         textView = (TextView) rootView.findViewById(R.id.hola);
-        getUser("http://192.168.1.67/tfg/searchUsersProfiles.php");
-        users=getUsers();
+
         adapter= new SwipeAdapter(this.getActivity(), users);
         swipeStack.setAdapter(adapter);
 
@@ -82,42 +83,34 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         return rootView;
     }
 
-    private ArrayList <Usuario> getUsers(){
+    /*private ArrayList <Usuario> getUsersList(){
         ArrayList<Usuario> list = new ArrayList<>();
-        list.add(new Usuario(R.drawable.icon8,"Stellaa37", "Jungle", "Challenger", "Vi", "Kha'Zix", "Camille", false));
-        list.add(new Usuario(R.drawable.icon3,"ZeKroX24", "Mid", "Iron 4", "Ekko", "Sylas", "Fizz", false));
-        list.add(new Usuario(R.drawable.icon2,"SKT Faker", "Mid", "Challenger", "Zed", "Twisted Fate", "Kassadin", false));
-        list.add(new Usuario(R.drawable.icon1,"G2 Perkz", "ADCarry", "Challenger", "Kai'Sa", "Xayah", "Aphelios", false));
-        list.add(new Usuario(R.drawable.icon3,"G2 Ibai", "Top", "Master", "Renekton", "Rumble", "Riven", false));
+        list.add(new Usuario(R.drawable.icon8, summoner, "EUW","Challenger", "JUNGLE", "Vi", "Kha'Zix", "Camille", false));
+        list.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
         return list;
-    }
+    }*/
 
-    private void getUser(String URL){
-        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+    private void getUsers(String URL){
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username=ZeKroX24", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    summoner = jsonArray.getJSONObject(0).getString("value");
+                    users.add(new Usuario(R.drawable.icon8, jsonArray.getJSONObject(0).getString("value"), jsonArray.getJSONObject(1).getString("value"),
+                            jsonArray.getJSONObject(2).getString("value"), jsonArray.getJSONObject(3).getString("value"),
+                            jsonArray.getJSONObject(4).getString("value"), jsonArray.getJSONObject(5).getString("value"),
+                            jsonArray.getJSONObject(6).getString("value"), false));
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                error.printStackTrace();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> parameters=new HashMap<>();
-                parameters.put("elo", "Bronze II");
-
-                return parameters;
-            }
-        };
-        requestQueue= Volley.newRequestQueue(this.getActivity());
+        });
+        requestQueue = Volley.newRequestQueue(this.getActivity());
         requestQueue.add(request);
     }
 
