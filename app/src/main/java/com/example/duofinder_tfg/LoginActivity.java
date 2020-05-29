@@ -92,8 +92,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void getLoginPreferences(){
         SharedPreferences preferences=getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
-        usernameET.setText(preferences.getString("username", "User"));
-        passwordET.setText(preferences.getString("password", "1234"));
+        usernameET.setText(preferences.getString("username", ""));
+        passwordET.setText(preferences.getString("password", ""));
     }
 
     public void launchNewUserActivity(View view) {
