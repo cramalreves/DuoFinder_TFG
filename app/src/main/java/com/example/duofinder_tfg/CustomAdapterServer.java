@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+//Custom adapter para el server
 public class CustomAdapterServer extends ArrayAdapter<String> {
     Context context;
     String[] names;
