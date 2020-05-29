@@ -3,24 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/myedittext">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_weight="0"
-        android:padding="5dp"
-        app:srcCompat="@drawable/aatrox" />
+    android:background="#55000000">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:padding="5dp"
         android:textColor="#FFFFFF"
-        android:paddingTop="8dp"
         android:text="Aatrox"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="16sp" />
+        android:textSize="22sp" />
 </LinearLayout>

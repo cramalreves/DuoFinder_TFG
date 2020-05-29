@@ -26,7 +26,8 @@ import java.util.Map;
 public class NewGameUserActivity extends AppCompatActivity {
     private EditText usernameET, summoner_nameET;
     private Spinner serverSP, rolesSP, champ1SP, champ2SP, champ3SP, elosSP;
-    private CustomAdapter champsAdapter, elosAdapter, rolesAdapter;
+    private CustomAdapter champsAdapter, elosAdapter, rolesAdapter ;
+    private CustomAdapterServer serversAdapter;
     private RequestQueue requestQueue;
     private String username;
 
@@ -63,12 +64,16 @@ public class NewGameUserActivity extends AppCompatActivity {
         rolesSP = (Spinner)findViewById(R.id.roleSP);
         rolesSP.setAdapter(rolesAdapter);
 
-        ArrayAdapter<String> serversAdapter = new ArrayAdapter<String>(this,
+        serversAdapter = new CustomAdapterServer(this,Images.servers,Images.rolesImages);
+        serverSP = (Spinner)findViewById(R.id.serverSP);
+        serverSP.setAdapter(serversAdapter);
+
+       /* ArrayAdapter<String> serversAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, Images.servers);
         serverSP = (Spinner)findViewById(R.id.textServer);
         serversAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
-        serverSP.setAdapter(serversAdapter);
+        serverSP.setAdapter(serversAdapter);*/
     }
 
     public void onClickRegister(View view){
