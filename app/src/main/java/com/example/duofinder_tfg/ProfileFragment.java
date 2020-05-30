@@ -1,6 +1,7 @@
 package com.example.duofinder_tfg;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import org.json.JSONArray;
@@ -29,7 +30,7 @@ import com.android.volley.toolbox.Volley;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment{
     private RequestQueue requestQueue;
     private String user;
     private TextView textServer, textElo, textSummoner, textRole;
@@ -92,5 +93,11 @@ public class ProfileFragment extends Fragment {
         requestQueue = Volley.newRequestQueue(this.getActivity());
         requestQueue.add(request);
     }
+
+    public void lanzar_settings(View view) {
+        Intent intent = new Intent(getActivity(), SettingsActivity.class);
+        startActivity(intent);
+    }
+
 
 }
