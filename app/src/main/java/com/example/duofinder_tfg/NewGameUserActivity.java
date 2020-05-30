@@ -1,5 +1,6 @@
 package com.example.duofinder_tfg;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -84,6 +85,10 @@ public class NewGameUserActivity extends AppCompatActivity {
         }*/
         //insert("http://192.168.1.128/tfg/insert_user.php");
         insertUser("http://192.168.1.67/tfg/insertNewGameUser.php");
+        Intent intent = new Intent(getApplicationContext(), MenuBottomActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        finish();
     }
 
     private void insertUser(String URL){

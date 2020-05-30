@@ -32,6 +32,7 @@ public class MenuBottomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_bottom);
         showSelectedFragment(new HomeFragment());
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        mBottomNavigation.setSelectedItemId(R.id.home);
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

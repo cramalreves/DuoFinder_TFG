@@ -32,7 +32,7 @@ import com.android.volley.toolbox.Volley;
 public class ProfileFragment extends Fragment {
     private RequestQueue requestQueue;
     private String user;
-    private TextView textServer, textElo, textSummoner;
+    private TextView textServer, textElo, textSummoner, textRole;
     private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole;
 
 
@@ -50,6 +50,7 @@ public class ProfileFragment extends Fragment {
         textElo = rootView.findViewById(R.id.textElo);
         textSummoner = rootView.findViewById(R.id.textSummoner);
         textServer = rootView.findViewById(R.id.textServer);
+       // textRole = rootView.findViewById(R.id.textLane);
         imageMain1 = rootView.findViewById(R.id.imageMain1);
         imageMain2 = rootView.findViewById(R.id.imageMain2);
         imageMain3 = rootView.findViewById(R.id.imageMain3);
@@ -70,8 +71,9 @@ public class ProfileFragment extends Fragment {
                     Images img = new Images();
                     JSONArray jsonArray = new JSONArray(response);
                     textSummoner.setText(jsonArray.getJSONObject(0).getString("value"));
-                    textServer.setText(jsonArray.getJSONObject(1).getString("value"));
+                    textServer.setText("#" + jsonArray.getJSONObject(1).getString("value"));
                     textElo.setText(jsonArray.getJSONObject(2).getString("value"));
+                   // textRole.setText(jsonArray.getJSONObject(3).getString("value"));
                     imageElo.setImageResource(img.getEloImageId(jsonArray.getJSONObject(2).getString("value")));
                     imageRole.setImageResource(img.getRoleImageId(jsonArray.getJSONObject(3).getString("value")));
                     imageMain1.setImageResource(img.getChampImageId(jsonArray.getJSONObject(4).getString("value")));
