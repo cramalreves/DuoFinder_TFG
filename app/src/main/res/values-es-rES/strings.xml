@@ -9,7 +9,7 @@
     <string name="main3">Campeón terciario</string>
     <string name="main2">Campeón secundario</string>
     <string name="photo">Foto de perfil</string>
-    <string name="discord">Usuario de Discord</string>
+    <string name="discord">Usuario de Discord:</string>
     <string name="signinText">No tienes cuenta?</string>
     <string name="signin">Registrarse</string>
     <string name="login">INICIAR SESIÓN</string>

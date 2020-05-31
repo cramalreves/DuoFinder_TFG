@@ -57,7 +57,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
-        textView = (TextView) rootView.findViewById(R.id.hola);
         getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
 
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
@@ -70,7 +69,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
             @Override
             public void onViewSwipedToLeft(int position) {
                 clear.setImageResource(R.drawable.ic_clear_red);
-                textView.setText("adios");
             }
 
             @Override

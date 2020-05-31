@@ -24,7 +24,7 @@
     <string name="main2">Second main champ</string>
     <string name="main3">Third main champ</string>
     <string name="photo">Profile photo</string>
-    <string name="discord">Discord username</string>
+    <string name="discord">Discord username:</string>
     <string name="login">LOGIN</string>
     <string name="signinText">Don\'t have an account yet?</string>
     <string name="signin">Sign up here</string>
