@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(!response.isEmpty()){
                     savePreferences();
                     Intent intent = new Intent(getApplicationContext(), MenuBottomActivity.class);
+                    intent.putExtra("username", usernameET.getText().toString());
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     finish();

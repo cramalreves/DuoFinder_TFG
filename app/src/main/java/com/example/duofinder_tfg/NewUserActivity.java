@@ -54,24 +54,25 @@ public class NewUserActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view){
-        /*if(edtUsername.getText().toString() == edtPwdVerify.getText().toString()){
-            insertUser("http://192.168.1.67/tfg/insertNewUser.php");
+        if(edtPwd.getText().toString().equals(edtPwdVerify.getText().toString())){
+            if(!edtUsername.getText().toString().equals("") || !edtPwd.getText().toString().equals("") ||
+                    !edtPwdVerify.getText().toString().equals("") || !edtDiscord.getText().toString().equals("")){
+                insertUser("http://192.168.1.67/tfg/insertNewUser.php");
+
+                //Iniciar activity NewGameUser
+                Intent i = new Intent(this, NewGameUserActivity.class);
+
+                //Arrastrar el edtUsername.gettext
+                i.putExtra("username", edtUsername.getText().toString());
+                startActivity(i);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                finish();
+            }else{
+                Toast.makeText(getApplicationContext(), getString(R.string.errorEmptyFields), Toast.LENGTH_SHORT).show();
+            }
         }else{
-            edtPwdVerify.setError("Passwords aren't the same");
-        }*/
-        if(!edtUsername.getText().toString().equals("") || !edtPwd.getText().toString().equals("") ||
-                !edtPwdVerify.getText().toString().equals("") || !edtDiscord.getText().toString().equals("")){
-            insertUser("http://192.168.1.67/tfg/insertNewUser.php");
-
-            //Iniciar activity NewGameUser
-            Intent i = new Intent(this, NewGameUserActivity.class);
-
-            //Arrastrar el edtUsername.gettext
-            i.putExtra("username", edtUsername.getText().toString());
-            startActivity(i);
+            edtPwdVerify.setError(getString(R.string.errorPWD));
         }
-
-        Toast.makeText(getApplicationContext(), "Faltan campos por rellenar", Toast.LENGTH_SHORT).show();
     }
 
     private void insertUser(String URL){
@@ -92,7 +93,7 @@ public class NewUserActivity extends AppCompatActivity {
                 parameters.put("username", edtUsername.getText().toString());
                 parameters.put("password", edtPwd.getText().toString());
                 parameters.put("discord", edtDiscord.getText().toString());
-                parameters.put("photo", photoSP.getSelectedItem().toString());
+                parameters.put("photo", Long.toString(photoSP.getSelectedItemId()));
 
                 return parameters;
             }

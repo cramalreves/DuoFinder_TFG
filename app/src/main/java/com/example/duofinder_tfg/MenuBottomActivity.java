@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +11,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
-
 import link.fls.swipestack.SwipeStack;
 
 public class MenuBottomActivity extends AppCompatActivity {
@@ -25,6 +21,7 @@ public class MenuBottomActivity extends AppCompatActivity {
     ArrayList<Usuario> users;
     private TextView textView;
     BottomNavigationView mBottomNavigation;
+    static String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
