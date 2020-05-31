@@ -59,14 +59,19 @@ public class NewUserActivity extends AppCompatActivity {
         }else{
             edtPwdVerify.setError("Passwords aren't the same");
         }*/
-        insertUser("http://192.168.1.67/tfg/insertNewUser.php");
+        if(!edtUsername.getText().toString().equals("") || !edtPwd.getText().toString().equals("") ||
+                !edtPwdVerify.getText().toString().equals("") || !edtDiscord.getText().toString().equals("")){
+            insertUser("http://192.168.1.67/tfg/insertNewUser.php");
 
-        //Iniciar activity NewGameUser
-        Intent i = new Intent(this, NewGameUserActivity.class);
+            //Iniciar activity NewGameUser
+            Intent i = new Intent(this, NewGameUserActivity.class);
 
-        //Arrastrar el edtUsername.gettext
-        i.putExtra("username", edtUsername.getText().toString());
-        startActivity(i);
+            //Arrastrar el edtUsername.gettext
+            i.putExtra("username", edtUsername.getText().toString());
+            startActivity(i);
+        }
+
+        Toast.makeText(getApplicationContext(), "Faltan campos por rellenar", Toast.LENGTH_SHORT).show();
     }
 
     private void insertUser(String URL){

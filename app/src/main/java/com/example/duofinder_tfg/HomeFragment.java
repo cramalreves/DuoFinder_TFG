@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     private ArrayList<Usuario> users;
     private TextView textView;
     private BottomBar bottomBar;
-    private String summoner;
     private RequestQueue requestQueue;
 
     public HomeFragment() {
@@ -49,15 +48,15 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //swipeStack=getView().findViewById(R.id.swipeStack);
         users = new ArrayList<>();
-        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
         textView = (TextView) rootView.findViewById(R.id.hola);
-
+        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
+        
         adapter= new SwipeAdapter(this.getActivity(), users);
         swipeStack.setAdapter(adapter);
 
@@ -85,8 +84,8 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
     /*private ArrayList <Usuario> getUsersList(){
         ArrayList<Usuario> list = new ArrayList<>();
-        list.add(new Usuario(R.drawable.icon8, summoner, "EUW","Challenger", "JUNGLE", "Vi", "Kha'Zix", "Camille", false));
-        list.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
+        list.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "JUNGLE", "Vi", "Kha'Zix", "Camille", false));
+        list.add(new Usuario(R.drawable.icon8, "ZeKroX24", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
         return list;
     }*/
 
@@ -100,6 +99,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                             jsonArray.getJSONObject(2).getString("value"), jsonArray.getJSONObject(3).getString("value"),
                             jsonArray.getJSONObject(4).getString("value"), jsonArray.getJSONObject(5).getString("value"),
                             jsonArray.getJSONObject(6).getString("value"), false));
+                    users.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
                 } catch (JSONException e) {
                     Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -112,6 +112,29 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         });
         requestQueue = Volley.newRequestQueue(this.getActivity());
         requestQueue.add(request);
+    }
+
+    public void createCards(){
+        adapter= new SwipeAdapter(this.getActivity(), users);
+        swipeStack.setAdapter(adapter);
+
+        swipeStack.setListener(new SwipeStack.SwipeStackListener() {
+            @Override
+            public void onViewSwipedToLeft(int position) {
+                clear.setImageResource(R.drawable.ic_clear_red);
+                textView.setText("adios");
+            }
+
+            @Override
+            public void onViewSwipedToRight(int position) {
+
+            }
+
+            @Override
+            public void onStackEmpty() {
+
+            }
+        });
     }
 
     public void like( View view){

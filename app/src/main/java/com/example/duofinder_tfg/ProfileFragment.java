@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ import com.android.volley.toolbox.Volley;
 public class ProfileFragment extends Fragment{
     private RequestQueue requestQueue;
     private String user;
+    private ImageView settings;
     private TextView textServer, textElo, textSummoner, textRole;
     private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole;
 
@@ -52,6 +54,14 @@ public class ProfileFragment extends Fragment{
         textSummoner = rootView.findViewById(R.id.textSummoner);
         textServer = rootView.findViewById(R.id.textServer);
        // textRole = rootView.findViewById(R.id.textLane);
+        settings = (ImageView) rootView.findViewById(R.id.imageSettings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         imageMain1 = rootView.findViewById(R.id.imageMain1);
         imageMain2 = rootView.findViewById(R.id.imageMain2);
         imageMain3 = rootView.findViewById(R.id.imageMain3);
@@ -93,11 +103,5 @@ public class ProfileFragment extends Fragment{
         requestQueue = Volley.newRequestQueue(this.getActivity());
         requestQueue.add(request);
     }
-
-    public void lanzar_settings(View view) {
-        Intent intent = new Intent(getActivity(), SettingsActivity.class);
-        startActivity(intent);
-    }
-
 
 }
