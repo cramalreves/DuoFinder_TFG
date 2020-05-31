@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
             @Override
             public void onViewSwipedToRight(int position) {
-
+                notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
             }
 
             @Override
@@ -196,7 +196,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
     @Override
     public void onViewSwipedToRight(int position) {
-        notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
+
     }
 
     @Override
