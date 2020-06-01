@@ -18,11 +18,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    String username, password;
+    String username, password, r;
     EditText usernameET, passwordET;
     private boolean keepConnected;
     RequestQueue requestQueue;
@@ -38,12 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         getLoginPreferences();
     }
 
-    public void validateUser(String URL){
+    /*public void validateUser(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
-                    savePreferences();
+                    //savePreferences();
                     Intent intent = new Intent(getApplicationContext(), MenuBottomActivity.class);
                     intent.putExtra("username", usernameET.getText().toString());
                     startActivity(intent);
@@ -62,13 +66,34 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> parameters=new HashMap<>();
-                parameters.put("username", username);
-                parameters.put("password", password);
+                parameters.put("username", usernameET.getText().toString());
+                parameters.put("password", passwordET.getText().toString());
                 return parameters;
             }
         };
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }*/
+
+    public void validateUser(String URL){
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?user="+username+"&password="+password, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                savePreferences();
+                Intent intent = new Intent(getApplicationContext(), MenuBottomActivity.class);
+                intent.putExtra("username", usernameET.getText().toString());
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
     }
 
     public void launchHomeActivity(View view) {
@@ -76,9 +101,9 @@ public class LoginActivity extends AppCompatActivity {
         password = passwordET.getText().toString();
         keepConnected = keepCBox.isChecked();
         if(!username.isEmpty() && !password.isEmpty()){
-            validateUser("http://192.168.1.67/tfg/validate_user.php");
+            validateUser("http://192.168.1.67/tfg/validateUser2.php");
         }else{
-            Toast.makeText(getApplicationContext(), "Write username and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.errorEmptyFields, Toast.LENGTH_SHORT).show();
         }
     }
 

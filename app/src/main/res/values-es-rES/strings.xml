@@ -22,4 +22,7 @@
     <string name="errorEmptyFields">Faltan campos por rellenar</string>
     <string name="errorSummonerName">Por favor, escriba su nombre de invocador</string>
     <string name="userNotify">" ha sido notificado"</string>
+    <string name="notificationUser">está buscando un compañero para jugar!</string>
+    <string name="textViewNotifications">Usuarios que quieren jugar:</string>
+    <string name="loginEmptyEDT">Escribe un usuario y contraseña</string>
 </resources>

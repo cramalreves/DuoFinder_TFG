@@ -6,6 +6,15 @@
     android:orientation="vertical"
     tools:context=".NotisFragment">
 
+    <TextView
+        android:id="@+id/textViewNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/textViewNotifications"
+        android:textColor="#FFFEFE"
+        android:textSize="24sp" />
+
     <ListView
         android:id="@+id/usersList"
         android:layout_width="match_parent"

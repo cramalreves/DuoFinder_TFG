@@ -65,7 +65,8 @@ public class NotisFragment extends Fragment {
                     for (int i=0; i<jsonArray.length(); i++){
                         String emisor = jsonArray.getJSONObject(i).getString("user_emisor");
                         usersThatNotify.add(emisor);
-                        usersThatNotifyProfileImage.add(Integer.valueOf(jsonArray.getJSONObject(i).getString("photo")));
+                        usersThatNotifyProfileImage.add(Images.profilePhotoImages[Integer.valueOf(jsonArray.getJSONObject(i).getString("photo"))]);
+                        //usersThatNotifyProfileImage.add(Integer.valueOf(jsonArray.getJSONObject(i).getString("photo")));
                     }
                     createList();
                 } catch (JSONException e) {
@@ -83,8 +84,7 @@ public class NotisFragment extends Fragment {
     }
 
     private void createList() {
-        //CustomAdapter adapter = new CustomAdapter(this.getActivity(),Images.roles,Images.rolesImages);
-        adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, usersThatNotify);
+        CustomAdapterNotifications adapter = new CustomAdapterNotifications(this.getActivity(),usersThatNotify,usersThatNotifyProfileImage);
         listview.setAdapter(adapter);
     }
 }

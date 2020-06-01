@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +26,7 @@ public class CustomAdapterProfile extends ArrayAdapter<String> {
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.spinner_icon, null);
-        ImageView i1 = (ImageView)row.findViewById(R.id.imageView);
+        ImageView i1 = (ImageView)row.findViewById(R.id.profileIcon);
         i1.setImageResource(images[position]);
 
         return row;
@@ -38,7 +37,7 @@ public class CustomAdapterProfile extends ArrayAdapter<String> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.spinner_icon, null);
-        ImageView i1 = (ImageView)row.findViewById(R.id.imageView);
+        ImageView i1 = (ImageView)row.findViewById(R.id.profileIcon);
         i1.setImageResource(images[position]);
 
         return row;

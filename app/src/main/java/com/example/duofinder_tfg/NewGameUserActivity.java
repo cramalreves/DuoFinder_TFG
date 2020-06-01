@@ -19,7 +19,7 @@ import java.util.Map;
 public class NewGameUserActivity extends AppCompatActivity {
     private EditText summoner_nameET;
     private Spinner serverSP, rolesSP, champ1SP, champ2SP, champ3SP, elosSP;
-    private CustomAdapter champsAdapter, elosAdapter, rolesAdapter ;
+    private CustomAdapterSpinners champsAdapter, elosAdapter, rolesAdapter ;
     private CustomAdapterServer serversAdapter;
     private RequestQueue requestQueue;
     private String username;
@@ -36,23 +36,23 @@ public class NewGameUserActivity extends AppCompatActivity {
     }
 
     public void setSpinners(){
-        champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
+        champsAdapter = new CustomAdapterSpinners(this,Images.champs,Images.champsImages);
         champ1SP = (Spinner)findViewById(R.id.imageMain1);
         champ1SP.setAdapter(champsAdapter);
 
-        champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
+        champsAdapter = new CustomAdapterSpinners(this,Images.champs,Images.champsImages);
         champ2SP = (Spinner)findViewById(R.id.imageMain2);
         champ2SP.setAdapter(champsAdapter);
 
-        champsAdapter = new CustomAdapter(this,Images.champs,Images.champsImages);
+        champsAdapter = new CustomAdapterSpinners(this,Images.champs,Images.champsImages);
         champ3SP = (Spinner)findViewById(R.id.imageMain3);
         champ3SP.setAdapter(champsAdapter);
 
-        elosAdapter = new CustomAdapter(this,Images.elos,Images.elosImages);
+        elosAdapter = new CustomAdapterSpinners(this,Images.elos,Images.elosImages);
         elosSP = (Spinner)findViewById(R.id.eloSP);
         elosSP.setAdapter(elosAdapter);
 
-        rolesAdapter = new CustomAdapter(this,Images.roles,Images.rolesImages);
+        rolesAdapter = new CustomAdapterSpinners(this,Images.roles,Images.rolesImages);
         rolesSP = (Spinner)findViewById(R.id.roleSP);
         rolesSP.setAdapter(rolesAdapter);
 

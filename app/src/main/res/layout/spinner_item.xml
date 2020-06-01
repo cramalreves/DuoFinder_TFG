@@ -6,7 +6,7 @@
     android:background="@drawable/myedittext">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profileIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_weight="0"
@@ -14,7 +14,7 @@
         app:srcCompat="@drawable/aatrox" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/edtUsername"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

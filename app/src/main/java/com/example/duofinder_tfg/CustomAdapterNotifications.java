@@ -11,27 +11,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-//Custom adapter para el server
-public class CustomAdapterServer extends ArrayAdapter<String> {
-    Context context;
-    String[] names;
-    int[] images;
+import java.util.ArrayList;
 
-    public CustomAdapterServer(@NonNull Context context, String[] names, int[] images) {
-        super(context, R.layout.spinner_item, names);
+public class CustomAdapterNotifications extends ArrayAdapter<String> {
+    Context context;
+    ArrayList<String> users;
+    ArrayList<Integer> images;
+
+    public CustomAdapterNotifications(@NonNull Context context, ArrayList<String> users, ArrayList<Integer> images) {
+        super(context, R.layout.listview_item, users);
         this.context = context;
-        this.names = names;
+        this.users = users;
         this.images = images;
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.spinner_item, null);
+        View row = inflater.inflate(R.layout.listview_item, null);
         TextView t1 = (TextView)row.findViewById(R.id.edtUsername);
         ImageView i1 = (ImageView)row.findViewById(R.id.profileIcon);
-        t1.setText(names[position]);
-        i1.setImageResource(R.drawable.ic_donut_large_black_24dp);
+        t1.setText(users.get(position));
+        i1.setImageResource(images.get(position));
 
         return row;
     }
@@ -40,11 +41,11 @@ public class CustomAdapterServer extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.spinner_item, null);
+        View row = inflater.inflate(R.layout.listview_item, null);
         TextView t1 = (TextView)row.findViewById(R.id.edtUsername);
         ImageView i1 = (ImageView)row.findViewById(R.id.profileIcon);
-        t1.setText(names[position]);
-        i1.setImageResource(R.drawable.ic_donut_large_black_24dp);
+        t1.setText(users.get(position));
+        i1.setImageResource(images.get(position));
 
         return row;
     }
