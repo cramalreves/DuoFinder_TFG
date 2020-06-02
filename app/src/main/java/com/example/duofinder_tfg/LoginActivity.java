@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText usernameET, passwordET;
     private boolean keepConnected;
     RequestQueue requestQueue;
-    CheckBox keepCBox;
+    CheckBox keepCBox;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
