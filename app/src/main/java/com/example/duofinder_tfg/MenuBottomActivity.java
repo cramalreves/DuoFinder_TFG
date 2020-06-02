@@ -40,7 +40,9 @@ public class MenuBottomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_bottom);
-        showSelectedFragment(new HomeFragment());
+        users = new ArrayList<>();
+        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
+        /*showSelectedFragment(new HomeFragment());
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         mBottomNavigation.setSelectedItemId(R.id.home);
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,9 +59,7 @@ public class MenuBottomActivity extends AppCompatActivity {
                 }
                 return true;
             }
-        });
-        users = new ArrayList<>();
-        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
+        });*/
     }
 
     //METODO QUE PERMITE ELEGIR EL FRAFMENT QUE SE MOSTRARA EN EL CONTAINER DEL HOME.
@@ -90,7 +90,7 @@ public class MenuBottomActivity extends AppCompatActivity {
                                 jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
                                 jsonArray.getJSONObject(i+6).getString("value"), false));
                     }
-
+                    cargarFragments();
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -103,6 +103,27 @@ public class MenuBottomActivity extends AppCompatActivity {
         });
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    private void cargarFragments() {
+        showSelectedFragment(new HomeFragment());
+        mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        mBottomNavigation.setSelectedItemId(R.id.home);
+        mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.profile) {
+                    showSelectedFragment(new ProfileFragment());
+                }
+                if (menuItem.getItemId() == R.id.home) {
+                    showSelectedFragment(new HomeFragment());
+                }
+                if (menuItem.getItemId() == R.id.notis) {
+                    showSelectedFragment(new NotisFragment());
+                }
+                return true;
+            }
+        });
     }
 
 }
