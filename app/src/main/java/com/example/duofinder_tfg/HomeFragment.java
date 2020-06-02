@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     private SwipeAdapter adapter;
     private ImageView fav, clear;
     private ArrayList<Usuario> users;
+    private boolean datosCargados=false;
     private TextView textView;
     private BottomBar bottomBar;
     private RequestQueue requestQueue;
@@ -57,12 +58,20 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
-        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
+        //getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
 
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         transmitter = prefs.getString("username", "example_user");
-        
-        adapter= new SwipeAdapter(this.getActivity(), getUsersList());
+
+        /*while(!datosCargados){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }*/
+
+        adapter= new SwipeAdapter(this.getActivity(), MenuBottomActivity.users);
         swipeStack.setAdapter(adapter);
 
         swipeStack.setListener(new SwipeStack.SwipeStackListener() {
@@ -86,15 +95,15 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         return rootView;
     }
 
-    private ArrayList <Usuario> getUsersList(){
+    /*private ArrayList <Usuario> getUsersList(){
         ArrayList<Usuario> list = new ArrayList<>();
         list.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "JUNGLE", "Vi", "Kha'Zix", "Camille", false));
         list.add(new Usuario(R.drawable.icon8, "ZeKroX24", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
         return list;
-    }
+    }*/
 
     private void getUsers(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username=ZeKroX24", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -103,7 +112,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                             jsonArray.getJSONObject(2).getString("value"), jsonArray.getJSONObject(3).getString("value"),
                             jsonArray.getJSONObject(4).getString("value"), jsonArray.getJSONObject(5).getString("value"),
                             jsonArray.getJSONObject(6).getString("value"), false));
-                    users.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
+                    datosCargados=true;
                 } catch (JSONException e) {
                     Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
