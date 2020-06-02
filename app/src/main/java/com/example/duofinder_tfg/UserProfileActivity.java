@@ -34,9 +34,9 @@ public class UserProfileActivity extends AppCompatActivity {
         textServer = findViewById(R.id.textServer);
         settings = findViewById(R.id.imageReturn);
         edtDiscord = findViewById(R.id.edtDiscord);
-        imageMain1 = findViewById(R.id.imageMain1);
+        imageMain1 = findViewById(R.id.imageMain2);
         imageMain2 = findViewById(R.id.imageMain2);
-        imageMain3 = findViewById(R.id.imageMain3);
+        imageMain3 = findViewById(R.id.imageMain2);
         imageElo = findViewById(R.id.imageElo);
         imageRole = findViewById(R.id.imageRole);
 

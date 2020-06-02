@@ -37,7 +37,7 @@ public class NewGameUserActivity extends AppCompatActivity {
 
     public void setSpinners(){
         champsAdapter = new CustomAdapterSpinners(this,Images.champs,Images.champsImages);
-        champ1SP = (Spinner)findViewById(R.id.imageMain1);
+        champ1SP = (Spinner)findViewById(R.id.imageMain2);
         champ1SP.setAdapter(champsAdapter);
 
         champsAdapter = new CustomAdapterSpinners(this,Images.champs,Images.champsImages);
@@ -45,7 +45,7 @@ public class NewGameUserActivity extends AppCompatActivity {
         champ2SP.setAdapter(champsAdapter);
 
         champsAdapter = new CustomAdapterSpinners(this,Images.champs,Images.champsImages);
-        champ3SP = (Spinner)findViewById(R.id.imageMain3);
+        champ3SP = (Spinner)findViewById(R.id.imageMain2);
         champ3SP.setAdapter(champsAdapter);
 
         elosAdapter = new CustomAdapterSpinners(this,Images.elos,Images.elosImages);

@@ -55,9 +55,9 @@ public class ProfileFragment extends Fragment{
             }
         });
 
-        imageMain1 = rootView.findViewById(R.id.imageMain1);
+        imageMain1 = rootView.findViewById(R.id.imageMain2);
         imageMain2 = rootView.findViewById(R.id.imageMain2);
-        imageMain3 = rootView.findViewById(R.id.imageMain3);
+        imageMain3 = rootView.findViewById(R.id.imageMain2);
         imageElo = rootView.findViewById(R.id.imageElo);
         imageRole = rootView.findViewById(R.id.imageRole);
         /*Bundle bundle = getActivity().getIntent().getExtras();
