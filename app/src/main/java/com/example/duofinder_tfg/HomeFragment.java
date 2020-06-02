@@ -63,13 +63,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         transmitter = prefs.getString("username", "example_user");
 
-        /*while(!datosCargados){
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
 
         adapter = new SwipeAdapter(this.getActivity(), MenuBottomActivity.users);
         swipeStack.setAdapter(adapter);
@@ -107,7 +100,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                                 jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
                                 jsonArray.getJSONObject(i+6).getString("value"), false));
                     }
-                    rellenarTarjetas();
                     //TODO Probar de refrescar aqui el fragment
                 } catch (JSONException e) {
                     Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
@@ -121,28 +113,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         });
         requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(request);
-    }
-
-    private void rellenarTarjetas() {
-        adapter = new SwipeAdapter(this.getActivity(), users);
-        swipeStack.setAdapter(adapter);
-
-        swipeStack.setListener(new SwipeStack.SwipeStackListener() {
-            @Override
-            public void onViewSwipedToLeft(int position) {
-                clear.setImageResource(R.drawable.ic_clear_red);
-            }
-
-            @Override
-            public void onViewSwipedToRight(int position) {
-                //notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
-            }
-
-            @Override
-            public void onStackEmpty() {
-
-            }
-        });
     }
 
     private void notifyUser(String URL){
