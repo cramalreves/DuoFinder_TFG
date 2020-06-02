@@ -36,28 +36,16 @@ public class MainActivity extends AppCompatActivity {
                 if(keepConnected){
                     Intent intent=new Intent(getApplicationContext(), MenuBottomActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    finish();
                 }else{
                     Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     finish();
                 }
             }
         });
     }
 
-    public void zoomIn() {
-        Animation animZoomIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in);
-        logo.startAnimation(animZoomIn);
-    }
-
-    public void zoomOut() {
-        Animation animZoomOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_out);
-        logo.startAnimation(animZoomOut);
-    }
-
-    public void lanzar_actividad() {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
 }
