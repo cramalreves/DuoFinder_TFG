@@ -44,7 +44,7 @@
                 android:textColor="#ffe3e3e3" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageRole"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
@@ -90,7 +90,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageElo"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -116,7 +116,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView8"
+                    android:id="@+id/imageMain2"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
@@ -126,7 +126,7 @@
                     card_view:srcCompat="@drawable/akali" />
 
                 <ImageView
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageMain1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -134,7 +134,7 @@
                     card_view:srcCompat="@drawable/ahri" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageMain3"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"

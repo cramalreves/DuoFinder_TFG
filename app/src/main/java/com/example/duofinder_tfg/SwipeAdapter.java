@@ -10,15 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
-public class SwipeAdapter extends ArrayAdapter<Usuario> {
-    private ArrayList<Usuario> users;
+public class SwipeAdapter extends ArrayAdapter<UserLol> {
+    private ArrayList<UserLol> users;
     private Activity activity;
 
-    public SwipeAdapter(@NonNull Activity activity, ArrayList<Usuario> users) {
+    public SwipeAdapter(@NonNull Activity activity, ArrayList<UserLol> users) {
         super(activity, 0, users);
         this.activity=activity;
         this.users=users;
@@ -31,22 +29,37 @@ public class SwipeAdapter extends ArrayAdapter<Usuario> {
 
     @Nullable
     @Override
-    public Usuario getItem(int position) {
+    public UserLol getItem(int position) {
         return users.get(position);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Usuario user = users.get(position);
+        Images i = new Images();
+        ImageView imgUser, imgRole, imgM1, imgM2, imgM3, imgElo;
+        TextView txtName, txtElo, txtServer;
+        UserLol user = users.get(position);
         convertView = activity.getLayoutInflater().inflate(R.layout.content_item,parent,false);
-        ImageView imgUser = convertView.findViewById(R.id.imgUser);
-        TextView txtName = convertView.findViewById(R.id.txtName);
-        TextView txtElo = convertView.findViewById(R.id.txtElo);
-
-        imgUser.setImageResource(user.getImagen());
-        txtName.setText(user.getNombre());
-        txtElo.setText(user.getElo());
+        imgUser = convertView.findViewById(R.id.imgUser);
+        txtServer = convertView.findViewById(R.id.txtServer);
+        txtName = convertView.findViewById(R.id.txtName);
+        txtElo = convertView.findViewById(R.id.txtElo);
+        imgRole = convertView.findViewById(R.id.imageRole);
+        imgElo = convertView.findViewById(R.id.imageElo);
+        imgM1 = convertView.findViewById(R.id.imageMain1);
+        imgM2 = convertView.findViewById(R.id.imageMain2);
+        imgM3 = convertView.findViewById(R.id.imageMain3);
+        String role = user.getRole();
+        imgRole.setImageResource(i.getRoleImageId(user.getRole()));
+        imgElo.setImageResource(i.getEloImageId(user.getElo()));
+        imgM1.setImageResource(i.getChampImageId(user.getChamp1()));
+        imgM2.setImageResource(i.getChampImageId(user.getChamp2()));
+        imgM3.setImageResource(i.getChampImageId(user.getChamp3()));
+        txtServer.setText(user.getServer());
+        imgUser.setImageResource(Images.profilePhotoImages[user.getPhoto()]);
+        txtName.setText(user.getSummoner_name());
+        txtElo.setText(user.getRole());
 
         return convertView;
     }

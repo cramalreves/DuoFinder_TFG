@@ -161,13 +161,13 @@
             android:layout_marginRight="30dp"/>
 
         <ImageView
-            android:id="@+id/imageMain1"
+            android:id="@+id/imageMain2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <ImageView
-            android:id="@+id/imageMain3"
+            android:id="@+id/imageMain2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="@mipmap/ic_launcher"

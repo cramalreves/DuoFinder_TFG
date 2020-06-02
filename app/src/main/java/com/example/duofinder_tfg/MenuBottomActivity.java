@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,16 +24,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import link.fls.swipestack.SwipeStack;
 
 public class MenuBottomActivity extends AppCompatActivity {
-    SwipeStack swipeStack;
-    SwipeAdapter adapter;
-    private TextView textView;
     BottomNavigationView mBottomNavigation;
     static String username;
-    static ArrayList<Usuario> users;
+    static ArrayList<UserLol> users;
     private RequestQueue requestQueue;
+    UserLol user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +38,6 @@ public class MenuBottomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_bottom);
         users = new ArrayList<>();
         getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
-        /*showSelectedFragment(new HomeFragment());
-        mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottomNavigation);
-        mBottomNavigation.setSelectedItemId(R.id.home);
-        mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.profile) {
-                    showSelectedFragment(new ProfileFragment());
-                }
-                if (menuItem.getItemId() == R.id.home) {
-                    showSelectedFragment(new HomeFragment());
-                }
-                if (menuItem.getItemId() == R.id.notis) {
-                    showSelectedFragment(new NotisFragment());
-                }
-                return true;
-            }
-        });*/
     }
 
     //METODO QUE PERMITE ELEGIR EL FRAFMENT QUE SE MOSTRARA EN EL CONTAINER DEL HOME.
@@ -85,7 +63,17 @@ public class MenuBottomActivity extends AppCompatActivity {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i=0; i<jsonArray.length(); i+=7){
-                        users.add(new Usuario(R.drawable.icon8, jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
+                        /*users.add(new UserLol(Integer.parseInt(jsonArray.getJSONObject(i).getString("photo")), jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
+                                jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
+                                jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
+                                jsonArray.getJSONObject(i+6).getString("value"), false));*/
+                        user = new UserLol(Integer.parseInt(jsonArray.getJSONObject(i).getString("id_user")), jsonArray.getJSONObject(i).getString("user"), jsonArray.getJSONObject(i).getString("discord"),
+                                Integer.parseInt(jsonArray.getJSONObject(i).getString("photo")), jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
+                                jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
+                                jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
+                                jsonArray.getJSONObject(i+6).getString("value"), false);
+                        users.add(new UserLol(Integer.parseInt(jsonArray.getJSONObject(i).getString("id_user")), jsonArray.getJSONObject(i).getString("user"), jsonArray.getJSONObject(i).getString("discord"),
+                                Integer.parseInt(jsonArray.getJSONObject(i).getString("photo")), jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
                                 jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
                                 jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
                                 jsonArray.getJSONObject(i+6).getString("value"), false));

@@ -10,22 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.roughike.bottombar.BottomBar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,10 +32,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     private String transmitter, receiver;
     private SwipeAdapter adapter;
     private ImageView fav, clear;
-    private ArrayList<Usuario> users;
-    private boolean datosCargados=false;
-    private TextView textView;
-    private BottomBar bottomBar;
     private RequestQueue requestQueue;
 
     public HomeFragment() {
@@ -52,17 +41,13 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        users = new ArrayList<>();
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
 
-        //getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
-
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         transmitter = prefs.getString("username", "example_user");
-
 
         adapter = new SwipeAdapter(this.getActivity(), MenuBottomActivity.users);
         swipeStack.setAdapter(adapter);
@@ -75,7 +60,8 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
             @Override
             public void onViewSwipedToRight(int position) {
-                //notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
+                receiver = MenuBottomActivity.users.get(position).getSummoner_name();
+                notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
             }
 
             @Override
@@ -86,33 +72,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
        // Inflate the layout for this fragment
         return rootView;
-    }
-
-    private void getUsers(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    for (int i=0; i<jsonArray.length(); i+=7){
-                        users.add(new Usuario(R.drawable.icon8, jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
-                                jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
-                                jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
-                                jsonArray.getJSONObject(i+6).getString("value"), false));
-                    }
-                    //TODO Probar de refrescar aqui el fragment
-                } catch (JSONException e) {
-                    Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(request);
     }
 
     private void notifyUser(String URL){
@@ -138,29 +97,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         requestQueue= Volley.newRequestQueue(this.getActivity());
         requestQueue.add(stringRequest);
     }
-
-    /*public void createCards(){
-        adapter= new SwipeAdapter(this.getActivity(), users);
-        swipeStack.setAdapter(adapter);
-
-        swipeStack.setListener(new SwipeStack.SwipeStackListener() {
-            @Override
-            public void onViewSwipedToLeft(int position) {
-                clear.setImageResource(R.drawable.ic_clear_red);
-                textView.setText("adios");
-            }
-
-            @Override
-            public void onViewSwipedToRight(int position) {
-
-            }
-
-            @Override
-            public void onStackEmpty() {
-
-            }
-        });
-    }*/
 
     public void like( View view){
         swipeStack.onViewSwipedToRight();
