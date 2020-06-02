@@ -76,7 +76,7 @@ public class NotisFragment extends Fragment {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i=0; i<jsonArray.length(); i++){
-                        usersThatNotify.add(jsonArray.getJSONObject(i).getString("user_emisor"));
+                        usersThatNotify.add(jsonArray.getJSONObject(i).getString("user_emisor") + getString(R.string.notificationUser));
                         usersThatNotifyProfileImage.add(Images.profilePhotoImages[Integer.valueOf(jsonArray.getJSONObject(i).getString("photo"))]);
                     }
                     createList();
