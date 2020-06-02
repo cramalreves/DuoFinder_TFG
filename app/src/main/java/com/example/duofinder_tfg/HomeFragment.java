@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     private SwipeAdapter adapter;
     private ImageView fav, clear;
     private ArrayList<Usuario> users;
+    private boolean datosCargados=false;
     private TextView textView;
     private BottomBar bottomBar;
     private RequestQueue requestQueue;
@@ -53,16 +54,24 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                              Bundle savedInstanceState) {
         users = new ArrayList<>();
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
-        getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
+
+        //getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
 
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         transmitter = prefs.getString("username", "example_user");
-        
-        adapter= new SwipeAdapter(this.getActivity(), getUsersList());
+
+        /*while(!datosCargados){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }*/
+
+        adapter = new SwipeAdapter(this.getActivity(), MenuBottomActivity.users);
         swipeStack.setAdapter(adapter);
 
         swipeStack.setListener(new SwipeStack.SwipeStackListener() {
@@ -73,7 +82,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
             @Override
             public void onViewSwipedToRight(int position) {
-                notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
+                //notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
             }
 
             @Override
@@ -86,24 +95,20 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         return rootView;
     }
 
-    private ArrayList <Usuario> getUsersList(){
-        ArrayList<Usuario> list = new ArrayList<>();
-        list.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "JUNGLE", "Vi", "Kha'Zix", "Camille", false));
-        list.add(new Usuario(R.drawable.icon8, "ZeKroX24", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
-        return list;
-    }
-
     private void getUsers(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username=ZeKroX24", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    users.add(new Usuario(R.drawable.icon8, jsonArray.getJSONObject(0).getString("value"), jsonArray.getJSONObject(1).getString("value"),
-                            jsonArray.getJSONObject(2).getString("value"), jsonArray.getJSONObject(3).getString("value"),
-                            jsonArray.getJSONObject(4).getString("value"), jsonArray.getJSONObject(5).getString("value"),
-                            jsonArray.getJSONObject(6).getString("value"), false));
-                    users.add(new Usuario(R.drawable.icon8, "Stellaa37", "EUW","Challenger", "MID", "Ekko", "Sylas", "Fizz", false));
+                    for (int i=0; i<jsonArray.length(); i+=7){
+                        users.add(new Usuario(R.drawable.icon8, jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
+                                jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
+                                jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
+                                jsonArray.getJSONObject(i+6).getString("value"), false));
+                    }
+                    rellenarTarjetas();
+                    //TODO Probar de refrescar aqui el fragment
                 } catch (JSONException e) {
                     Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -114,8 +119,30 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                 error.printStackTrace();
             }
         });
-        requestQueue = Volley.newRequestQueue(this.getActivity());
+        requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(request);
+    }
+
+    private void rellenarTarjetas() {
+        adapter = new SwipeAdapter(this.getActivity(), users);
+        swipeStack.setAdapter(adapter);
+
+        swipeStack.setListener(new SwipeStack.SwipeStackListener() {
+            @Override
+            public void onViewSwipedToLeft(int position) {
+                clear.setImageResource(R.drawable.ic_clear_red);
+            }
+
+            @Override
+            public void onViewSwipedToRight(int position) {
+                //notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
+            }
+
+            @Override
+            public void onStackEmpty() {
+
+            }
+        });
     }
 
     private void notifyUser(String URL){

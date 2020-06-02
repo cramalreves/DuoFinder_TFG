@@ -42,12 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         getLoginPreferences();
     }
 
-    /*public void validateUser(String URL){
+    public void validateUser(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
-                    //savePreferences();
+                    savePreferences();
                     Intent intent = new Intent(getApplicationContext(), MenuBottomActivity.class);
                     intent.putExtra("username", usernameET.getText().toString());
                     startActivity(intent);
@@ -73,9 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         };
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-    }*/
+    }
 
-    public void validateUser(String URL){
+    /*public void validateUser(String URL){
         StringRequest request = new StringRequest(Request.Method.GET, URL+"?user="+username+"&password="+password, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -94,14 +94,14 @@ public class LoginActivity extends AppCompatActivity {
         });
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
-    }
+    }*/
 
     public void launchHomeActivity(View view) {
         username = usernameET.getText().toString();
         password = passwordET.getText().toString();
         keepConnected = keepCBox.isChecked();
         if(!username.isEmpty() && !password.isEmpty()){
-            validateUser("http://192.168.1.67/tfg/validateUser.php");
+            validateUser("http://192.168.1.67/tfg/validate_user.php");
         }else{
             Toast.makeText(getApplicationContext(), R.string.errorEmptyFields, Toast.LENGTH_SHORT).show();
         }
