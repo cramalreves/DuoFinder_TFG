@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context=".ProfileFragment"
-    android:background="@drawable/background">
+    tools:context=".UserProfileActivity"
+    android:background="@drawable/background"
+    android:gravity="center_horizontal">
 
     <ImageView
         android:id="@+id/imageReturn"
@@ -17,7 +17,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:alpha=".4"
-        android:foreground="@drawable/ic_settings_black_24dp" />
+        android:foreground="@drawable/ic_replay_black_24dp"
+        android:onClick="onClickReturn" />
 
     <ImageView
         android:id="@+id/imageProfile"
@@ -173,6 +174,5 @@
             app:srcCompat="@mipmap/ic_launcher"
             android:layout_marginLeft="30dp"/>
     </LinearLayout>
-
 
 </LinearLayout>

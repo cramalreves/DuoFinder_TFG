@@ -26,9 +26,8 @@ import com.android.volley.toolbox.Volley;
 public class ProfileFragment extends Fragment{
     private RequestQueue requestQueue;
     private String username;
-    private ImageView settings;
     private TextView textServer, textElo, textSummoner, edtDiscord;
-    private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole, icon;
+    private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole, icon, settings;
 
 
     public ProfileFragment() {
@@ -46,7 +45,7 @@ public class ProfileFragment extends Fragment{
         textElo = rootView.findViewById(R.id.textElo);
         textSummoner = rootView.findViewById(R.id.textSummoner);
         textServer = rootView.findViewById(R.id.textServer);
-        settings = (ImageView) rootView.findViewById(R.id.imageSettings);
+        settings = (ImageView) rootView.findViewById(R.id.imageReturn);
         edtDiscord = rootView.findViewById(R.id.edtDiscord);
 
         settings.setOnClickListener(new View.OnClickListener() {

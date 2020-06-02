@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".MenuBottomActivity" />
         <activity android:name=".NewUserActivity" />
         <activity android:name=".NewGameUserActivity" />

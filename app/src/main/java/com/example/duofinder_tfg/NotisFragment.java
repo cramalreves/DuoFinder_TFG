@@ -1,6 +1,7 @@
 package com.example.duofinder_tfg;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -53,6 +55,17 @@ public class NotisFragment extends Fragment {
         username = prefs.getString("username", "example_user");
         getUserNotifications("http://192.168.1.67/tfg/searchUserNotifications.php");
         listview = rootView.findViewById(R.id.usersList);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String usernameSelected = (String) listview.getItemAtPosition(position);
+
+                Intent i = new Intent(getActivity(), UserProfileActivity.class);
+                i.putExtra("usernameSelected", usernameSelected);
+                startActivity(i);
+            }
+        });
+
         return rootView;
     }
 
@@ -63,10 +76,8 @@ public class NotisFragment extends Fragment {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i=0; i<jsonArray.length(); i++){
-                        String emisor = jsonArray.getJSONObject(i).getString("user_emisor");
-                        usersThatNotify.add(emisor);
+                        usersThatNotify.add(jsonArray.getJSONObject(i).getString("user_emisor"));
                         usersThatNotifyProfileImage.add(Images.profilePhotoImages[Integer.valueOf(jsonArray.getJSONObject(i).getString("photo"))]);
-                        //usersThatNotifyProfileImage.add(Integer.valueOf(jsonArray.getJSONObject(i).getString("photo")));
                     }
                     createList();
                 } catch (JSONException e) {
