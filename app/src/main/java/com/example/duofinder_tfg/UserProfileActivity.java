@@ -44,7 +44,7 @@ public class UserProfileActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         usernameSelected = bundle.getString("usernameSelected");
         textSummoner.setText(usernameSelected);
-        getUserAtributes("http://192.168.1.67/tfg/searchUserSelectedProfile.php");
+        getUserAtributes("http://192.168.1.67/tfg/searchUserProfile.php");
     }
 
     private void getUserAtributes(String URL){

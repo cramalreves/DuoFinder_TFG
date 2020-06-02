@@ -34,11 +34,19 @@
                 android:layout_weight="1"
                 android:paddingLeft="5dp"
                 android:text="@string/username"
-                android:gravity="right"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:paddingRight="5dp"
+                android:textSize="15sp"
+                android:text="@string/notificationUser"
+                android:textColor="#B7E6B9" />
         </LinearLayout>
 
     </LinearLayout>
