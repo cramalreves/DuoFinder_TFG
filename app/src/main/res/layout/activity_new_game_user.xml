@@ -92,7 +92,7 @@
             android:textColorHint="#60FFFFFF" />
 
     <Spinner
-        android:id="@+id/imageMain2"
+        android:id="@+id/champ1SP"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/myedittext"
@@ -111,7 +111,7 @@
         />
 
     <Spinner
-        android:id="@+id/imageMain2"
+        android:id="@+id/champ2SP"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/myedittext"
@@ -129,7 +129,7 @@
             android:textColorHint="#60FFFFFF" />
 
     <Spinner
-        android:id="@+id/imageMain2"
+        android:id="@+id/champ3SP"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/myedittext"

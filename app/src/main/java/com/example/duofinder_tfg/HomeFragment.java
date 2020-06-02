@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
             @Override
             public void onViewSwipedToRight(int position) {
-                receiver = MenuBottomActivity.users.get(position).getSummoner_name();
+                receiver = MenuBottomActivity.users.get(position).getUsername();
                 notifyUser("http://192.168.1.67/tfg/insertNewNotification.php");
             }
 
