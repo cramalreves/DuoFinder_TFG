@@ -36,12 +36,14 @@ public class NewUserActivity extends AppCompatActivity {
         edtPwd = findViewById(R.id.edtPwd);
         edtDiscord = findViewById(R.id.edtDiscord);
         icon = findViewById(R.id.icon);
-        CustomAdapterProfile photoAdapter = new CustomAdapterProfile(this,Images.profilePhoto,Images.profilePhotoImages);
+        CustomAdapterProfile photoAdapter = new CustomAdapterProfile(
+                this,Images.profilePhoto,Images.profilePhotoImages);
         photoSP = (Spinner)findViewById(R.id.imageSP);
         photoSP.setAdapter(photoAdapter);
         photoSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
+                                       int position, long id) {
                 icon.setImageResource(Images.profilePhotoImages[position]);
             }
 

@@ -131,14 +131,13 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
             }
         }){
             @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> parameters=new HashMap<>();
-                parameters.put("transmitter", transmitter);
-                parameters.put("receiver", receiver);
-
-                return parameters;
-            }
-        };
+        protected Map<String, String> getParams(){
+            Map<String, String> parameters=new HashMap<>();
+            parameters.put("transmitter", transmitter);
+            parameters.put("receiver", receiver);
+            return parameters;
+        }
+    };
         requestQueue= Volley.newRequestQueue(this.getActivity());
         requestQueue.add(stringRequest);
     }

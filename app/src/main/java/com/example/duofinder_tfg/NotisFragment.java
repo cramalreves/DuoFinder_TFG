@@ -59,7 +59,6 @@ public class NotisFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String usernameSelected = (String) listview.getItemAtPosition(position);
-
                 Intent i = new Intent(getActivity(), UserProfileActivity.class);
                 i.putExtra("usernameSelected", usernameSelected);
                 startActivity(i);
