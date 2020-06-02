@@ -34,6 +34,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="5dp"
                 android:text="@string/username"
+                android:gravity="right"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp" />
