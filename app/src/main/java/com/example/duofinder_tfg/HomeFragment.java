@@ -58,11 +58,8 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         fav = (ImageView) rootView.findViewById(R.id.imageButton4);
         clear = (ImageView) rootView.findViewById(R.id.imageButton2);
 
-        //getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
-
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         transmitter = prefs.getString("username", "example_user");
-
 
         adapter = new SwipeAdapter(this.getActivity(), MenuBottomActivity.users);
         swipeStack.setAdapter(adapter);
@@ -83,7 +80,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
 
             }
         });
-
        // Inflate the layout for this fragment
         return rootView;
     }
@@ -139,28 +135,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         requestQueue.add(stringRequest);
     }
 
-    /*public void createCards(){
-        adapter= new SwipeAdapter(this.getActivity(), users);
-        swipeStack.setAdapter(adapter);
-
-        swipeStack.setListener(new SwipeStack.SwipeStackListener() {
-            @Override
-            public void onViewSwipedToLeft(int position) {
-                clear.setImageResource(R.drawable.ic_clear_red);
-                textView.setText("adios");
-            }
-
-            @Override
-            public void onViewSwipedToRight(int position) {
-
-            }
-
-            @Override
-            public void onStackEmpty() {
-
-            }
-        });
-    }*/
 
     public void like( View view){
         swipeStack.onViewSwipedToRight();
