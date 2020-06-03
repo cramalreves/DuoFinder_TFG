@@ -24,8 +24,6 @@ import com.android.volley.toolbox.Volley;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment{
-    private RequestQueue requestQueue;
-    private String username;
     private TextView textServer, textElo, textSummoner, edtDiscord;
     private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole, icon, settings;
     private UserLol userLogged;
@@ -62,39 +60,7 @@ public class ProfileFragment extends Fragment{
         imageElo = rootView.findViewById(R.id.imageElo);
         imageRole = rootView.findViewById(R.id.imageRole);
         setUserProfile();
-        //getUserAtributes("http://192.168.1.67/tfg/searchUserProfile.php");
         return rootView;
-    }
-
-    private void getUserAtributes(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+userLogged.getUsername(), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    Images img = new Images();
-                    JSONArray jsonArray = new JSONArray(response);
-                    icon.setImageResource(Images.profilePhotoImages[Integer.parseInt(jsonArray.getJSONObject(0).getString("photo"))]);
-                    edtDiscord.setText(jsonArray.getJSONObject(0).getString("discord"));
-                    textSummoner.setText(jsonArray.getJSONObject(0).getString("value"));
-                    textServer.setText("#" + jsonArray.getJSONObject(1).getString("value"));
-                    textElo.setText(jsonArray.getJSONObject(2).getString("value"));
-                    imageElo.setImageResource(img.getEloImageId(jsonArray.getJSONObject(2).getString("value")));
-                    imageRole.setImageResource(img.getRoleImageId(jsonArray.getJSONObject(3).getString("value")));
-                    imageMain1.setImageResource(img.getChampImageId(jsonArray.getJSONObject(4).getString("value")));
-                    imageMain2.setImageResource(img.getChampImageId(jsonArray.getJSONObject(5).getString("value")));
-                    imageMain3.setImageResource(img.getChampImageId(jsonArray.getJSONObject(6).getString("value")));
-                } catch (JSONException e) {
-                    Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        requestQueue = Volley.newRequestQueue(this.getActivity());
-        requestQueue.add(request);
     }
 
     private void setUserProfile(){
