@@ -34,13 +34,11 @@ import link.fls.swipestack.SwipeStack;
  * A simple {@link Fragment} subclass.
  */
 public class NotisFragment extends Fragment {
-    private SwipeStack swipeStack;
     private ListView listview;
-    private String username;
     private RequestQueue requestQueue;
-    private ArrayAdapter<String> adapter;
     private ArrayList<String> usersThatNotify = new ArrayList<>();
     private ArrayList<Integer> usersThatNotifyProfileImage = new ArrayList<>();
+    private UserLol userLogged;
 
     public NotisFragment() {
         // Required empty public constructor
@@ -51,8 +49,8 @@ public class NotisFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_notis, container, false);
-        SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
-        username = prefs.getString("username", "example_user");
+        MenuBottomActivity activity = (MenuBottomActivity)getActivity();
+        userLogged = activity.getUserLogged();
         getUserNotifications("http://192.168.1.67/tfg/searchUserNotifications.php");
         listview = rootView.findViewById(R.id.usersList);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -69,7 +67,7 @@ public class NotisFragment extends Fragment {
     }
 
     private void getUserNotifications(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+username, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+userLogged.getUsername(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

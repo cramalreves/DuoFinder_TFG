@@ -25,4 +25,5 @@
     <string name="notificationUser">está buscando un compañero para jugar!</string>
     <string name="textViewNotifications">Usuarios que quieren jugar:</string>
     <string name="loginEmptyEDT">Escribe un usuario y contraseña</string>
+    <string name="errorLogin">El usuario o contraseña son incorrectos</string>
 </resources>
