@@ -50,7 +50,7 @@ public class SwipeAdapter extends ArrayAdapter<UserLol> {
         imgM1 = convertView.findViewById(R.id.imageMain1);
         imgM2 = convertView.findViewById(R.id.imageMain2);
         imgM3 = convertView.findViewById(R.id.imageMain3);
-        String role = user.getRole();
+
         imgRole.setImageResource(i.getRoleImageId(user.getRole()));
         imgElo.setImageResource(i.getEloImageId(user.getElo()));
         imgM1.setImageResource(i.getChampImageId(user.getChamp1()));
@@ -59,7 +59,7 @@ public class SwipeAdapter extends ArrayAdapter<UserLol> {
         txtServer.setText(user.getServer());
         imgUser.setImageResource(Images.profilePhotoImages[user.getPhoto()]);
         txtName.setText(user.getSummoner_name());
-        txtElo.setText(user.getRole());
+        txtElo.setText(user.getElo());
 
         return convertView;
     }

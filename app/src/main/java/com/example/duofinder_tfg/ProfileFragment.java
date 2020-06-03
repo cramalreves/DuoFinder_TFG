@@ -28,6 +28,7 @@ public class ProfileFragment extends Fragment{
     private String username;
     private TextView textServer, textElo, textSummoner, edtDiscord;
     private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole, icon, settings;
+    private UserLol userLogged;
 
 
     public ProfileFragment() {
@@ -38,40 +39,35 @@ public class ProfileFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        MenuBottomActivity activity = (MenuBottomActivity)getActivity();
+        userLogged = activity.getUserLogged();
+
         icon = rootView.findViewById(R.id.imageProfile);
         textElo = rootView.findViewById(R.id.textElo);
         textSummoner = rootView.findViewById(R.id.textSummoner);
         textServer = rootView.findViewById(R.id.textServer);
         settings = (ImageView) rootView.findViewById(R.id.imageReturn);
         edtDiscord = rootView.findViewById(R.id.edtDiscord);
-
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SettingsActivity.class);
                 startActivity(intent);
             }
         });
-
         imageMain1 = rootView.findViewById(R.id.imageMain1);
         imageMain2 = rootView.findViewById(R.id.imageMain2);
         imageMain3 = rootView.findViewById(R.id.imageMain3);
         imageElo = rootView.findViewById(R.id.imageElo);
         imageRole = rootView.findViewById(R.id.imageRole);
-        /*Bundle bundle = getActivity().getIntent().getExtras();
-        username = bundle.getString("username");*/
-        SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
-        username = prefs.getString("username", "example_user");
-        getUserAtributes("http://192.168.1.67/tfg/searchUserProfile.php");
-        /**/
-
+        setUserProfile();
+        //getUserAtributes("http://192.168.1.67/tfg/searchUserProfile.php");
         return rootView;
     }
 
     private void getUserAtributes(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+username, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+userLogged.getUsername(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -99,6 +95,20 @@ public class ProfileFragment extends Fragment{
         });
         requestQueue = Volley.newRequestQueue(this.getActivity());
         requestQueue.add(request);
+    }
+
+    private void setUserProfile(){
+        Images img = new Images();
+        icon.setImageResource(Images.profilePhotoImages[userLogged.getPhoto()]);
+        edtDiscord.setText(userLogged.getDiscord());
+        textSummoner.setText(userLogged.getSummoner_name());
+        textServer.setText("#" + userLogged.getServer());
+        textElo.setText(userLogged.getElo());
+        imageElo.setImageResource(img.getEloImageId(userLogged.getElo()));
+        imageRole.setImageResource(img.getRoleImageId(userLogged.getRole()));
+        imageMain1.setImageResource(img.getChampImageId(userLogged.getChamp1()));
+        imageMain2.setImageResource(img.getChampImageId(userLogged.getChamp2()));
+        imageMain3.setImageResource(img.getChampImageId(userLogged.getChamp3()));
     }
 
 }

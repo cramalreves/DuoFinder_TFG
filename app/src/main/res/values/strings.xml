@@ -41,4 +41,5 @@
     <string name="notificationUser">" is looking for a partner to play!"</string>
     <string name="textViewNotifications">Users that want to play:</string>
     <string name="loginEmptyEDT">Write username and password</string>
+    <string name="errorLogin">Username or password are incorrect</string>
 </resources>

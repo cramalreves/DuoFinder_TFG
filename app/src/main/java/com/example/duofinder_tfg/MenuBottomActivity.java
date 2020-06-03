@@ -26,17 +26,17 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 public class MenuBottomActivity extends AppCompatActivity {
-    BottomNavigationView mBottomNavigation;
-    static String username;
-    static ArrayList<UserLol> users;
+    private BottomNavigationView mBottomNavigation;
+    public UserLol user;
+    public static ArrayList<UserLol> users;
     private RequestQueue requestQueue;
-    UserLol user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_bottom);
         users = new ArrayList<>();
+        user = (UserLol)getIntent().getExtras().getSerializable("user");
         getUsers("http://192.168.1.67/tfg/searchUsersProfiles.php");
     }
 
@@ -57,21 +57,12 @@ public class MenuBottomActivity extends AppCompatActivity {
     }
 
     private void getUsers(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+user.getUsername()+"&elo="+user.getElo()+"&role="+user.getRole(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i=0; i<jsonArray.length(); i+=7){
-                        /*users.add(new UserLol(Integer.parseInt(jsonArray.getJSONObject(i).getString("photo")), jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
-                                jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
-                                jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
-                                jsonArray.getJSONObject(i+6).getString("value"), false));*/
-                        user = new UserLol(Integer.parseInt(jsonArray.getJSONObject(i).getString("id_user")), jsonArray.getJSONObject(i).getString("user"), jsonArray.getJSONObject(i).getString("discord"),
-                                Integer.parseInt(jsonArray.getJSONObject(i).getString("photo")), jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
-                                jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
-                                jsonArray.getJSONObject(i+4).getString("value"), jsonArray.getJSONObject(i+5).getString("value"),
-                                jsonArray.getJSONObject(i+6).getString("value"), false);
                         users.add(new UserLol(Integer.parseInt(jsonArray.getJSONObject(i).getString("id_user")), jsonArray.getJSONObject(i).getString("user"), jsonArray.getJSONObject(i).getString("discord"),
                                 Integer.parseInt(jsonArray.getJSONObject(i).getString("photo")), jsonArray.getJSONObject(i).getString("value"), jsonArray.getJSONObject(i+1).getString("value"),
                                 jsonArray.getJSONObject(i+2).getString("value"), jsonArray.getJSONObject(i+3).getString("value"),
@@ -112,6 +103,10 @@ public class MenuBottomActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public UserLol getUserLogged(){
+        return user;
     }
 
 }

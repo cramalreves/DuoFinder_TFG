@@ -1,6 +1,8 @@
 package com.example.duofinder_tfg;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
     private int id;
     private String username;
     private String discord;
