@@ -51,6 +51,7 @@ public class SwipeAdapter extends ArrayAdapter<UserLol> {
         imgM2 = convertView.findViewById(R.id.imageMain2);
         imgM3 = convertView.findViewById(R.id.imageMain3);
         String role = user.getRole();
+
         imgRole.setImageResource(i.getRoleImageId(user.getRole()));
         imgElo.setImageResource(i.getEloImageId(user.getElo()));
         imgM1.setImageResource(i.getChampImageId(user.getChamp1()));

@@ -29,16 +29,13 @@ public class ProfileFragment extends Fragment{
     private TextView textServer, textElo, textSummoner, edtDiscord;
     private ImageView imageMain1, imageMain2, imageMain3, imageElo, imageRole, icon, settings;
 
-
     public ProfileFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         icon = rootView.findViewById(R.id.imageProfile);

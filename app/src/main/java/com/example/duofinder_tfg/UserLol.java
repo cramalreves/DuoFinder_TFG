@@ -10,7 +10,8 @@ public class UserLol extends User{
     private String champ3;
     private boolean like;
 
-    public UserLol(int id, String username, String discord, int photo, String summoner_name, String server, String elo, String rol, String champ1, String champ2, String champ3, boolean like) {
+    public UserLol(int id, String username, String discord, int photo, String summoner_name, String server,
+                   String elo, String rol, String champ1, String champ2, String champ3, boolean like) {
         super(id, username, discord, photo);
         this.summoner_name = summoner_name;
         this.server = server;
