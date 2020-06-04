@@ -57,7 +57,7 @@ public class MenuBottomActivity extends AppCompatActivity {
     }
 
     private void getUsers(String URL){
-        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+user.getUsername()+"&elo="+user.getElo()+"&role="+user.getRole(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL+"?username="+user.getUsername()+"&elo="+user.getElo()+"&role="+user.getRole()+"&server="+user.getServer(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

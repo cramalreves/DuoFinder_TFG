@@ -45,39 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         getLoginPreferences();
     }
 
-    /*public void validateUser(String URL){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if(!response.isEmpty()){
-                    savePreferences();
-                    Intent intent = new Intent(getApplicationContext(), MenuBottomActivity.class);
-                    intent.putExtra("username", usernameET.getText().toString());
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Username or password are incorrect", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> parameters=new HashMap<>();
-                parameters.put("username", usernameET.getText().toString());
-                parameters.put("password", passwordET.getText().toString());
-                return parameters;
-            }
-        };
-        requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }*/
-
     public void validateUser(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override

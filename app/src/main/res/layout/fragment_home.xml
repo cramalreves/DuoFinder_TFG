@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
     android:background="@drawable/background">
 
@@ -19,7 +20,7 @@
             android:layout_height="450dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            />
+            app:stack_rotation="-1"/>
     </FrameLayout>
 
     <LinearLayout
