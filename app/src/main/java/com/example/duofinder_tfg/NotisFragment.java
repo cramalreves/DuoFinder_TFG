@@ -62,6 +62,7 @@ public class NotisFragment extends Fragment {
                 startActivity(i);
             }
         });
+        listview.setEmptyView(rootView.findViewById(R.id.empty_view));
 
         return rootView;
     }

@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getActivity().getApplicationContext(), transmitter+" "+getString(R.string.userNotify), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), receiver+" "+getString(R.string.userNotify), Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener(){
             @Override

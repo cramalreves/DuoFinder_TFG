@@ -26,4 +26,5 @@
     <string name="textViewNotifications">Usuarios que quieren jugar:</string>
     <string name="loginEmptyEDT">Escribe un usuario y contraseña</string>
     <string name="errorLogin">El usuario o contraseña son incorrectos</string>
+    <string name="empty_text">No hay notificaciones, aún</string>
 </resources>

@@ -42,4 +42,5 @@
     <string name="textViewNotifications">Users that want to play:</string>
     <string name="loginEmptyEDT">Write username and password</string>
     <string name="errorLogin">Username or password are incorrect</string>
+    <string name="empty_text">There aren\'t any notifications, yet</string>
 </resources>
