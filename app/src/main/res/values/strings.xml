@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TFG</string>
+    <string name="app_name">DUO Finder</string>
     <string name="title_activity_settings" translatable="false">Settings</string>
 
     <!-- Preference Titles -->

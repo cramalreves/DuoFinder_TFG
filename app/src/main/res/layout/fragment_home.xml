@@ -16,11 +16,11 @@
         <link.fls.swipestack.SwipeStack
             android:id="@+id/swipeStack"
             android:layout_width="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_height="450dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            app:stack_rotation="-1"/>
+            android:background="@android:color/transparent"
+            app:stack_rotation="-1" />
     </FrameLayout>
 
     <LinearLayout
@@ -28,26 +28,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/content"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="240dp"
         android:textAlignment="center"
         android:layout_centerHorizontal="true">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_clear_black_24dp"
-            android:layout_marginRight="150dp"
-            android:onClick="dislike"
-            android:background="@android:color/transparent"/>
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="like"
-            android:src="@drawable/ic_favorite_black_24dp"
-            android:background="@android:color/transparent"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:src="@drawable/redarr"
+            android:alpha="0.5"
+            android:layout_marginRight="40dp"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:src="@drawable/greenarr"
+            android:alpha="0.5"
+            android:layout_marginLeft="40dp"/>
     </LinearLayout>
 
 </FrameLayout>

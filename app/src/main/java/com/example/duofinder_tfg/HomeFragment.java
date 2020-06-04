@@ -31,7 +31,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
     private SwipeStack swipeStack;
     private String transmitter, receiver;
     private SwipeAdapter adapter;
-    private ImageView fav, clear;
     private RequestQueue requestQueue;
 
     public HomeFragment() {
@@ -43,8 +42,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         swipeStack=(SwipeStack) rootView.findViewById(R.id.swipeStack);
-        fav = (ImageView) rootView.findViewById(R.id.imageButton4);
-        clear = (ImageView) rootView.findViewById(R.id.imageButton2);
 
         SharedPreferences prefs = this.getActivity().getSharedPreferences("loginPreferences", Context.MODE_PRIVATE);
         transmitter = prefs.getString("username", "example_user");
@@ -55,7 +52,6 @@ public class HomeFragment extends Fragment implements SwipeStack.SwipeStackListe
         swipeStack.setListener(new SwipeStack.SwipeStackListener() {
             @Override
             public void onViewSwipedToLeft(int position) {
-                clear.setImageResource(R.drawable.ic_clear_red);
             }
 
             @Override
